@@ -30,4 +30,5 @@ Rails.application.routes.draw do
 
     root to: "dashboard#index"
   end
+  resources :courses, :only => [:show, :index]
 end

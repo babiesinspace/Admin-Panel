@@ -6,6 +6,10 @@ YOU ARE IN COHORTS SHOW
 
 <h3><%= @cohort.startdate.strftime("%B %d, %Y") %> - <%= @cohort.enddate.strftime("%B %d, %Y") %></h3>
 
+<% if @cohort.grades.values.any? %>
+  <h4><%= @cohort.grades.values.count %></h4>
+<% end %>
+
 <h4>Classmates</h4>
 <p>
   <% if @cohort.students.any? %>

@@ -62,5 +62,6 @@ require 'date'
 #   student = Student.all.sample
 #   cohort = Cohort.find(rand(1..10))
 #   student.cohorts << cohort
-#   Grade.create(student_id: student.id, cohort_id: cohort.id, value: rand(50..100))
+#   stuco = StudentCohort.find_by(student_id: student.id, cohort_id: cohort.id)
+#   Grade.create(student_cohort_id: stuco.id, value: rand(50..100))
 # end 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_04_144644) do
+ActiveRecord::Schema.define(version: 2018_05_04_231647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,13 +61,11 @@ ActiveRecord::Schema.define(version: 2018_05_04_144644) do
   end
 
   create_table "grades", force: :cascade do |t|
-    t.bigint "student_id"
-    t.bigint "cohort_id"
-    t.integer "value"
+    t.bigint "student_cohort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_grades_on_cohort_id"
-    t.index ["student_id"], name: "index_grades_on_student_id"
+    t.integer "value"
+    t.index ["student_cohort_id"], name: "index_grades_on_student_cohort_id"
   end
 
   create_table "salaries", force: :cascade do |t|

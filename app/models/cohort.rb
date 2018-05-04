@@ -3,7 +3,7 @@ class Cohort < ApplicationRecord
   has_many :student_cohorts
   has_many :students, through: :student_cohorts
   has_many :assignments
-  has_many :grades
+  has_many :grades, through: :student_cohorts
   belongs_to :teacher
   has_many :announcements
 

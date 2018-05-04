@@ -9,15 +9,20 @@
 require 'faker'
 require 'date'
 
+# #Create Salaries
+# admin_salary = Salary.create(income: 100000)
+# teacher_salary = Salary.create(income: 75000)
+
 # #Create Admin
-# admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin")
+# admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin", salary: admin_salary)
 
 # #Create Teachers
 # 10.times do 
-#   User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher")
+#   User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher", salary: teacher_salary)
 # end 
 
-#Create Courses
+
+# # Create Courses
 # admin = Admin.first 
 # sei = admin.courses.create(name: "Software Development Intensive", hours: 450, level: "Beginner")
 # sep = admin.courses.create(name: "Software Development Part Time", hours: 450, level: "Beginner")
@@ -27,21 +32,21 @@ require 'date'
 # js_f = admin.courses.create(name: "JavaScript Frameworks", hours: 400, level: "Intermediate")
 
 # #Create Cohorts
-# sei.cohorts.create(name: "WDF", startdate: DateTime.new(2018,2,26), enddate: DateTime.new(2018,6,9), teacher_id: Teacher.all.sample)
-# sei.cohorts.create(name: "Spring", startdate: DateTime.new(2018,2,26), enddate: DateTime.new(2018,6,9), teacher_id: Teacher.all.sample)
-# sei.cohorts.create(name: "Fall", startdate: DateTime.new(2018,8,26), enddate: DateTime.new(2018,12,9), teacher_id: Teacher.all.sample)
+# sei.cohorts.create(name: "WDF", startdate: DateTime.new(2018,2,26), enddate: DateTime.new(2018,6,9), teacher_id: Teacher.all.sample.id)
+# sei.cohorts.create(name: "Spring", startdate: DateTime.new(2018,2,26), enddate: DateTime.new(2018,6,9), teacher_id: Teacher.all.sample.id)
+# sei.cohorts.create(name: "Fall", startdate: DateTime.new(2018,8,26), enddate: DateTime.new(2018,12,9), teacher_id: Teacher.all.sample.id)
 
-# sep.cohorts.create(name: "Fall", startdate: DateTime.new(2018,9,4), enddate: DateTime.new(2018,4,9), teacher_id: Teacher.all.sample)
-# sep.cohorts.create(name: "Spring", startdate: DateTime.new(2018,2,16), enddate: DateTime.new(2018,8,9), teacher_id: Teacher.all.sample)
+# sep.cohorts.create(name: "Fall", startdate: DateTime.new(2018,9,4), enddate: DateTime.new(2018,4,9), teacher_id: Teacher.all.sample.id)
+# sep.cohorts.create(name: "Spring", startdate: DateTime.new(2018,2,16), enddate: DateTime.new(2018,8,9), teacher_id: Teacher.all.sample.id)
 
-# ux.cohorts.create(name: "Summer", startdate: DateTime.new(2018,6,23), enddate: DateTime.new(2018,9,2), teacher_id: Teacher.all.sample)
-# ux.cohorts.create(name: "Winter", startdate: DateTime.new(2018,11,13), enddate: DateTime.new(2018,3,13), teacher_id: Teacher.all.sample)
+# ux.cohorts.create(name: "Summer", startdate: DateTime.new(2018,6,23), enddate: DateTime.new(2018,9,2), teacher_id: Teacher.all.sample.id)
+# ux.cohorts.create(name: "Winter", startdate: DateTime.new(2018,11,13), enddate: DateTime.new(2018,3,13), teacher_id: Teacher.all.sample.id)
 
-# adv_rails.cohorts.create(name: "2018", startdate: DateTime.new(2018,5,3), enddate: DateTime.new(2018,8,14), teacher_id: Teacher.all.sample)
+# adv_rails.cohorts.create(name: "2018", startdate: DateTime.new(2018,5,3), enddate: DateTime.new(2018,8,14), teacher_id: Teacher.all.sample.id)
 
-# db_mg.cohorts.create(name: "2017", startdate: DateTime.new(2017,12,6), enddate: DateTime.new(2018,3,9), teacher_id: Teacher.all.sample)
+# db_mg.cohorts.create(name: "2017", startdate: DateTime.new(2017,12,6), enddate: DateTime.new(2018,3,9), teacher_id: Teacher.all.sample.id)
 
-# js_f.cohorts.create(name: "2017", startdate: DateTime.new(2018,11,29), enddate: DateTime.new(2018,2,12), teacher_id: Teacher.all.sample)
+# js_f.cohorts.create(name: "2017", startdate: DateTime.new(2018,11,29), enddate: DateTime.new(2018,2,12), teacher_id: Teacher.all.sample.id)
 
 
 # #Create Students
@@ -49,13 +54,13 @@ require 'date'
 #   User.create(email: Faker::Internet.unique.email, password: "studentpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Student")
 # end
 
-Student.all.each do |student|
-  student.cohorts << Cohort.find(rand(1..10))
-end 
+# Student.all.each do |student|
+#   student.cohorts << Cohort.find(rand(1..10))
+# end 
 
 # 40.times do 
-#   student = Student.find(rand(1..100)).cohorts
+#   student = Student.all.sample
 #   cohort = Cohort.find(rand(1..10))
 #   student.cohorts << cohort
-#   Grade.create(student_id: student.id, cohort_id: cohort.id)
+#   Grade.create(student_id: student.id, cohort_id: cohort.id, value: rand(50..100))
 # end 

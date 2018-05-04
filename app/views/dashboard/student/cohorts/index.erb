@@ -1,1 +1,15 @@
-YOU ARE IN COHORTS INDEX
+YOU ARE IN Student COHORTS INDEX
+
+<h1>Welcome, <%= @student.fullname %></h1>
+
+<h4>Your Classes:</h4>
+<% @cohorts.each do |cohort| %>
+
+  <p>
+    <%= link_to(cohort.name, dashboard_cohort_path(cohort) )  %>
+    <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %> 
+    <%= cohort.teacher.first %> <%= cohort.teacher.last %>   
+  </p>
+
+
+<% end %>

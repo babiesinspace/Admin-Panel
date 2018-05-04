@@ -3,6 +3,7 @@ class Course < ApplicationRecord
 
 
   has_many :cohorts
+  has_many :teachers, through: :cohorts
   has_many :student_cohorts, through: :cohorts
   has_many :students, through: :student_cohorts
   has_many :announcements, through: :cohorts

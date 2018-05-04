@@ -7,4 +7,8 @@ class User < ApplicationRecord
   scope :teachers, -> { where(type: 'Teacher') } 
   scope :students, -> { where(type: 'Student') } 
   scope :admins, -> { where(type: 'Admin') }
+
+  def fullname
+    self.first + " " + self.last
+  end 
 end

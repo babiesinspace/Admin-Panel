@@ -4,6 +4,10 @@ class Cohort < ApplicationRecord
   has_many :students, through: :student_cohorts
   has_many :assignments
   has_many :grades
-  has_one :teacher
+  belongs_to :teacher
   has_many :announcements
+
+  def fullname
+    self.course.name + " " + self.name
+  end 
 end

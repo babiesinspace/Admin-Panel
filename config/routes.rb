@@ -15,10 +15,12 @@ Rails.application.routes.draw do
 
     authenticated :teacher do
         resources :cohorts, module: "teacher", :only => [:show, :index] do 
-          resources :grades
+          resources :grades, :only => [:edit, :destroy]
           resources :assignments
           resources :announcements
+          resources :students, :only => [:show]
         end
+        resources :students, module: "teacher", :only => [:index]
     end
 
     authenticated :admin do

@@ -1,0 +1,15 @@
+THIS SHOWS ALL THE TEACHERS STUDENTS
+
+
+<h1>Welcome, <%= @teacher.fullname %></h1>
+
+<% @cohorts.each do |cohort| %>
+  <h4><%= cohort.fullname %></h4>
+  <h5>Your Students:</h5>
+  <% cohort.students.each do |student| %>
+    <p>
+      <%= link_to(student.fullname, dashboard_cohort_student_path(cohort.id, student.id) )  %>
+    </p>
+  <% end %>
+
+<% end %>

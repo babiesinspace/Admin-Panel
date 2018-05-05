@@ -1,0 +1,26 @@
+YOU ARE IN TEACHER/STUDENT SHOW
+
+<h1><%= @student.fullname %></h1>
+
+<% @student.cohorts.each do |cohort| %>
+<h3><%= link_to(cohort.name, dashboard_cohort_path(cohort) )  %> <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %></h3>
+
+  <% if @stu_cohort.grade %>
+    <% grade = @stu_cohort.grade %>
+    Grade: <%= link_to(grade.value, dashboard_grade_path(grade) )  %>
+  <% end %>
+<% end %>
+
+
+<h4><%= link_to("Assignments", dashboard_cohort_assignments_path(@stu_cohort.cohort) )  %></h4>
+<p>
+  <% if @stu_cohort.cohort.assignments.any? %>
+  <ul>
+    <% @cohort.assignments.each do |assignment| %>
+    <li><%= link_to(assignment.title, dashboard_cohort_assignment_path(assignment.cohort_id, assignment.id) )  %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    Nothing due at the moment!
+  <% end %>
+</p>

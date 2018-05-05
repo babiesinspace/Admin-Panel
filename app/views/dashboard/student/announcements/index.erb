@@ -1,0 +1,17 @@
+YOU ARE IN STUDENT/SPECIFIC-COHORT/ANNOUNCEMENTS
+
+<h1><%= @cohort.fullname %></h1>
+
+<h3>Announcements</h3>
+
+<p>
+  <% if @announcements.any? %>
+  <ul>
+    <% @announcements.each do |announcement| %>
+    <li><%= link_to(announcement.title, dashboard_cohort_announcement_path(announcement.cohort_id, announcement.id) )  %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    No announcements!
+  <% end %>
+</p>

@@ -1,0 +1,7 @@
+YOU ARE IN STUDENT/SPECIFIC-COHORT/SPECIFIC-ANNOUNCEMENTS
+
+<h1><%= @announcement.title %></h1>
+
+<h1><%= @announcement.startdate.strftime("%a %b %d, %Y %l:%M%p") %> - <%= @announcement.enddate.strftime("%l:%M%p") %></h1>
+
+<p><%= @announcement.body %></p>

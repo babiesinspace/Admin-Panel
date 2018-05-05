@@ -10,6 +10,30 @@
   </head>
 
   <body>
+    <nav>
+      Navigation
+      <%= link_to Dashboard, dashboard_root_path %>
+      <% if student_signed_in? %>
+          <%= link_to 'Log out', destroy_student_session_path, method: :delete %>
+      <% elsif teacher_signed_in? %>
+          <%= link_to 'Log out', destroy_teacher_session_path, method: :delete %>
+      <% elsif admin_signed_in? %>
+          <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+      <% else %>
+        <%= link_to('Student Login', new_student_session_path)  %> 
+        <%= link_to('Teacher Login', new_teacher_session_path)  %> 
+        <%= link_to('Administrator Login', new_admin_session_path)  %>  
+      <% end %>
+    </nav>
+
     <%= yield %>
+    <% unless flash.empty? %>
+         <script type="text/javascript">
+              <% flash.each do |f| %>
+            <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+             toastr['<%= type %>']('<%= f[1] %>');
+         <% end %>
+         </script>
+    <% end %>
   </body>
 </html>

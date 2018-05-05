@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   root to: "pages#index"
   namespace :dashboard do
     authenticated :student do
+        resources :grades, module: "student", :only => [:show, :index]
         resources :cohorts, module: "student", :only => [:show, :index] do 
-          resources :grades, :only => [:show, :index]
           resources :assignments, :only => [:show, :index]
           resources :announcements, :only => [:show, :index]
         end

@@ -3,7 +3,7 @@ THIS SHOWS ALL THE TEACHERS COHORT-SPECIFIC ASSIGNMENTS
 
 <h1>Welcome, <%= current_user.fullname %></h1>
 
-<h3><%= @cohort.fullname %></h3>
+<h3><%= @assignment.cohort.fullname %></h3>
 
 <h5><%= @assignment.title %></h5>
 
@@ -12,6 +12,12 @@ THIS SHOWS ALL THE TEACHERS COHORT-SPECIFIC ASSIGNMENTS
   <br><br>
   Due: <%= @assignment.enddate.strftime("%B %d, %Y")  %>
 </p>
-<%= link_to("Edit", edit_dashboard_cohort_assignment_path(@assignment) )  %>
-<%= link_to "Delete", dashboard_cohort_assignment_path(@cohort.id, @assignment.id), data: { confirm: "Are you sure?" }, method: :delete %>
-
+<p>
+  <%= link_to("Edit", edit_dashboard_cohort_assignment_path(@assignment) )  %>
+  <%= link_to "Delete", dashboard_cohort_assignment_path(@assignment.cohort_id, @assignment.id), data: { confirm: "Are you sure?" }, method: :delete %>
+</p>
+<p><%= link_to("Back to Assignments", dashboard_cohort_assignments_path ) %></p>
+ 
+<div>
+  <%= link_to("Cohort Dashboard", dashboard_cohort_path(@assignment.cohort_id) )  %>
+</div>

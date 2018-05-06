@@ -1,0 +1,30 @@
+THIS IS TO CREATE A SPECIFIC ANNOUCEMENT
+
+<h2>Make Announcement</h2>
+
+<%= form_for(:announcement, url: dashboard_cohort_announcements_path) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %> 
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :startdate, 'Starts ' %><br />
+    <%= f.datetime_select :startdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enddate, 'Ends ' %><br />
+    <%= f.datetime_select :enddate %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

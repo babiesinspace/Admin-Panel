@@ -1,0 +1,23 @@
+THIS SHOWS ALL THE TEACHERS COHORT-SPECIFIC ASSIGNMENTS
+
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h3><%= @announcement.cohort.fullname %></h3>
+
+<h5><%= @announcement.title %></h5>
+
+<p>
+  <%= @announcement.body %>
+  <br><br>
+  Ends: <%= @announcement.enddate.strftime("%a %b %d, %Y %l:%M%p")  %>
+</p>
+<p>
+  <%= link_to("Edit", edit_dashboard_cohort_announcement_path(@announcement) )  %>
+  <%= link_to "Delete", dashboard_cohort_announcement_path(@announcement.cohort_id, @announcement.id), data: { confirm: "Are you sure?" }, method: :delete %>
+</p>
+<p><%= link_to("Back to Announcements", dashboard_cohort_announcements_path ) %></p>
+ 
+<div>
+  <%= link_to("Cohort Dashboard", dashboard_cohort_path(@announcement.cohort_id) )  %>
+</div>

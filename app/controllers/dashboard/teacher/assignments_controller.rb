@@ -1,24 +1,30 @@
 class Dashboard::Teacher::AssignmentsController < ApplicationController
   before_action :authenticate_teacher!
 
+    #Better to call Assignments?
     def index
       @cohort = Cohort.find(params[:cohort_id])
     end 
 
     def show
-      @cohort = Cohort.find(params[:cohort_id])
       @assignment = Assignment.find(params[:id])
+      if @assignment.cohort_id.to_s == params[:cohort_id]
+        render 'show'
+      else 
+        redirect_to dashboard_cohort_assignments_path
+      end
     end
 
     def edit
       @assignment = Assignment.find(params[:id])
+      
     end 
 
     def update
       @assignment = Assignment.find(params[:id])
       if @assignment.update_attributes(assignment_params)
         # Handle a successful update.
-        redirect_to dashboard_cohort_assignment_path(@assignment.id)
+        redirect_to dashboard_cohort_assignment_path(@assignment.cohort_id, @assignment.id)
       else
         render 'edit'
       end

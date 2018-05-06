@@ -31,5 +31,7 @@ THIS IS TO EDIT A SPECIFIC ASSIGNMENT
 
 <h3>Erase this Assignment</h3>
 
-<p><%= button_to "Delete", dashboard_cohort_assignment_path(@cohort.id, @assignment.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p><%= button_to "Delete", dashboard_cohort_assignment_path(@assignment.cohort_id, @assignment.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+<p><%= link_to("Back to Assignments", dashboard_cohort_assignments_path ) %></p>
+ 

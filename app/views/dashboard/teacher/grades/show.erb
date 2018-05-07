@@ -1,0 +1,20 @@
+THIS IS THE SHOW PAGE FOR COHORT GRADES
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h3><%= @grade.student_cohort.cohort.fullname %></h3>
+
+<h5><%= @student.fullname %></h5>
+
+<p>
+  <%= @grade.value %>
+</p>
+<p>
+  <%= link_to("Edit", edit_dashboard_cohort_grade_path(@cohort_id, @grade) )  %>
+  <%= link_to "Delete", dashboard_cohort_grade_path(@cohort_id, @grade.id), data: { confirm: "Are you sure?" }, method: :delete %>
+</p>
+<p><%= link_to("Back to Grades", dashboard_cohort_grades_path ) %></p>
+ 
+<div>
+  <%= link_to("Cohort Dashboard", dashboard_cohort_path(@cohort_id) )  %>
+</div>

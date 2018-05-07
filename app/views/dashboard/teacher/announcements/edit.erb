@@ -1,0 +1,37 @@
+THIS IS TO EDIT A SPECIFIC ANNOUNCEMENT
+
+<h2>Edit <%= @announcement.title  %></h2>
+
+<%= form_for(@announcement, url: dashboard_cohort_announcement_path(@announcement), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %> 
+    <%= f.text_field :body %>
+  </div>
+
+  <div class="field">
+    <%= f.label :startdate, 'Starts ' %><br />
+    <%= f.datetime_select :startdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enddate, 'Due ' %><br />
+    <%= f.datetime_select :enddate %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Erase this Announcement</h3>
+
+<p><%= button_to "Delete", dashboard_cohort_announcement_path(@announcement.cohort_id, @announcement.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<p><%= link_to("Back to Announcements", dashboard_cohort_announcements_path ) %></p>
+ 

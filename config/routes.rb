@@ -18,7 +18,9 @@ Rails.application.routes.draw do
           resources :grades
           resources :assignments
           resources :announcements
+          resources :students, :only => [:show]
         end
+        resources :students, module: "teacher", :only => [:index]
     end
 
     authenticated :admin do

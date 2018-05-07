@@ -58,6 +58,7 @@ require 'date'
 #   student.cohorts << Cohort.find(rand(1..10))
 # end 
 
+#!!!check if you can add student to grade on line 66!!
 # 40.times do 
 #   student = Student.all.sample
 #   cohort = Cohort.find(rand(1..10))

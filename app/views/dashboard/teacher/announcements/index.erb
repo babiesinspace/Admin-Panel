@@ -1,0 +1,17 @@
+INDEX - ALL THE TEACHERS ANNOUNCEMENTS
+
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<% @cohort.announcements.each do |announcement| %>
+    <p>
+      <%= link_to(announcement.title, dashboard_cohort_announcement_path(@cohort.id, announcement.id) )  %>
+    </p>
+  <% end %>
+
+<div>
+  <%= link_to("New Announcement", new_dashboard_cohort_announcement_path )  %>
+</div>
+<div>
+  <%= link_to("Cohort Dashboard", dashboard_cohort_path(@cohort.id) )  %>
+</div>

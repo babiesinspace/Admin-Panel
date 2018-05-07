@@ -1,0 +1,18 @@
+YOU ARE IN STUDENT SPECIFIC ASSIGNMENTS
+(UNTESTED)
+
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h3><%= @cohort.fullname %></h3>
+
+<h5><%= @assignment.title %></h5>
+
+<p>
+  <%= @assignment.instructions %>
+  <br><br>
+  Due: <%= @assignment.enddate.strftime("%B %d, %Y")  %>
+</p>
+
+<p><%= link_to("Back to Assignments", dashboard_cohort_assignments_path ) %></p>
+ 

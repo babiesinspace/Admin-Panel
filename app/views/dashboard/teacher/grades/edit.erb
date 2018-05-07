@@ -1,0 +1,32 @@
+THIS IS THE TEACHER - COHORT - GRADE EDITOR 
+
+<h2>Change <%= @student.fullname %>'s Grade</h2>
+
+<h1>Put the below code in a partial!</h1>
+<% if @grade.errors.any? %>
+  <ul>
+    <% @grade.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@grade, url: dashboard_cohort_grade_path(@cohort_id, @grade), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :student_id, :value => @student.id %>
+    <%= f.hidden_field :cohort_id, :value => @cohort_id %>
+    <%= f.label :value %><br />
+    <%= f.number_field :value, min: 0, max: 100 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Erase this Grade</h3>
+
+<p><%= button_to "Delete", dashboard_cohort_announcement_path(@cohort_id, @grade.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<p><%= link_to("Back to Grades", dashboard_cohort_grades_path ) %></p>

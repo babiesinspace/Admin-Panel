@@ -1,1 +1,11 @@
 YOU ARE IN STUDENT/SPECIFIC-COHORT/ASSIGNMENTS
+(UNTESTED)
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<% if @cohort.announcements.any? %>
+  <% @cohort.assignments.each do |assignment| %>
+      <p>
+        <%= link_to(assignment.title, dashboard_cohort_assignment_path(@cohort.id, assignment.id) )  %>
+      </p>
+    <% end %>
+<% end %>

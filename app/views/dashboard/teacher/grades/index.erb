@@ -3,15 +3,18 @@ THIS SHOWS THE GRADES FOR A COHORT
 <h1>Welcome, <%= current_user.fullname %></h1>
 
 <h3><%= @cohort.fullname %></h3>
-<% @cohort.grades.each do |grade| %>
+<% @cohort.student_cohorts.each do |grade| %>
+  <% if grade.grade? %>
     <p>
-      <%= link_to(grade.student_cohort.student.fullname, dashboard_cohort_grade_path(@cohort.id, grade.id) )  %>
+      <%= link_to((grade.student.fullname + " - " + grade.grade.to_s), dashboard_cohort_grade_path(@cohort.id, grade.id) )  %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to(grade.student.fullname, dashboard_cohort_grade_path(@cohort.id, grade.id)) %>
     </p>
   <% end %>
+<% end %>
 
-<div>
-  <%= link_to("Add Grade", new_dashboard_cohort_grade_path )  %>
-</div>
 <div>
   <%= link_to("Cohort Dashboard", dashboard_cohort_path(@cohort.id) )  %>
 </div>

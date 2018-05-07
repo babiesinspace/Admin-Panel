@@ -16,7 +16,7 @@ YOU ARE IN TEACHER/STUDENT SHOW
 <p>
   <% if @stu_cohort.cohort.assignments.any? %>
   <ul>
-    <% @cohort.assignments.each do |assignment| %>
+    <% @stu_cohort.cohort.assignments.each do |assignment| %>
     <li><%= link_to(assignment.title, dashboard_cohort_assignment_path(assignment.cohort_id, assignment.id) )  %></li>
     <% end %>
   </ul>

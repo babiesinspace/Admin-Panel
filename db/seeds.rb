@@ -58,11 +58,7 @@ require 'date'
 #   student.cohorts << Cohort.find(rand(1..10))
 # end 
 
-#!!!check if you can add student to grade on line 66!!
-# 40.times do 
-#   student = Student.all.sample
-#   cohort = Cohort.find(rand(1..10))
-#   student.cohorts << cohort
-#   stuco = StudentCohort.find_by(student_id: student.id, cohort_id: cohort.id)
-#   Grade.create(student_cohort_id: stuco.id, value: rand(50..100))
-# end 
+# !!!check if you can add student to grade on line 66!!
+40.times do 
+  StudentCohort.all.sample.update_attributes(grade: rand(50..100))
+end 

@@ -1,10 +1,11 @@
 class Dashboard::DashboardController < ApplicationController
   
   def index
-    if current_user.class == Student || Teacher
+    current_user
+    if current_user.class == Student || current_user.class == Teacher
       redirect_to dashboard_cohorts_path
     elsif current_user.class == Admin
-      dashboard_courses_path
+      redirect_to dashboard_courses_path
     end
   end
 end

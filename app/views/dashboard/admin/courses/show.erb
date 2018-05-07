@@ -1,0 +1,31 @@
+YOU ARE IN ADMIN COURSE SHOW
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+<h3><%= @course.level %> <%= @course.hours %> Hours </h3>
+<% if @course.cohorts.any? %>
+  <h4>Cohorts</h4>
+  <% @course.cohorts.each do |cohort| %>
+
+    <p>
+      <%= link_to(cohort.fullname, dashboard_course_cohort_path(@course, cohort) )  %> 
+      <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %>  
+    </p>
+    <ul>
+      <%= link_to("Students", dashboard_course_cohort_enrollees_path(@course, cohort.id) )  %>
+      <%= link_to("Teacher", dashboard_teacher_path(cohort.teacher) )  %>    
+    </ul>
+    <% if cohort.announcements.any? %>
+      <ul>
+        <h4>Announcements</h4>
+        <% cohort.announcements.each do |announcement| %>
+          <li><%= link_to(announcement.title, dashboard_course_cohort_announcement_path(@course, cohort.id)) %></li>
+        <% end %>
+      </ul> 
+    <% end %>
+  <% end %>
+<% else %>
+  <h4>Nothing right now! </h4>
+<% end %>
+<%= link_to("Edit this Course", edit_dashboard_course_path(@course) )  %>
+<%= link_to "Delete this course", dashboard_course_path(@course.id), data: { confirm: "Are you sure? This will erase the course and all corresponding cohorts!" }, method: :delete %>
+<%= link_to("Add New Cohort", new_dashboard_course_cohort_path(@course) )  %>

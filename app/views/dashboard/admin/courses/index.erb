@@ -1,0 +1,20 @@
+YOU ARE IN ADMIN COURSES INDEX
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h4>Course Directory</h4>
+<% if @courses.any? %>
+  <% @courses.each do |course| %>
+
+    <p>
+      <%= link_to(course.name, dashboard_course_path(course) )  %> 
+      <%= course.level %> 
+      <%= course.hours %> Hours 
+    </p>
+
+  <% end %>
+<% else %>
+  <h4>Nothing right now! </h4>
+<% end %>
+
+<%= link_to("Add New Course", new_dashboard_course_path )  %>

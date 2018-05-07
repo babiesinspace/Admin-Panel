@@ -25,9 +25,13 @@ Rails.application.routes.draw do
 
     authenticated :admin do
         resources :courses, module: "admin" do 
-          resources :cohorts
-          resources :announcements
+          resources :cohorts, except: [:index] do 
+            resources :announcements
+            resources :enrollees
+          end
         end
+        resources :students, module: "admin"
+        resources :teachers, module: "admin"
     end
 
     root to: "dashboard#index"

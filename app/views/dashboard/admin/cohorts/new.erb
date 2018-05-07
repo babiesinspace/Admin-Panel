@@ -1,0 +1,30 @@
+THIS IS TO CREATE A SPECIFIC COHORT
+
+<h2>Create a New Cohort</h2>
+
+<%= form_for(:cohort, url: dashboard_course_cohorts_path) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :teacher_id %> 
+    <%= f.collection_select(:teacher_id, Teacher.all, :id, :fullname ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :startdate, 'Starts ' %><br />
+    <%= f.datetime_select :startdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enddate, 'Ends ' %><br />
+    <%= f.datetime_select :enddate %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

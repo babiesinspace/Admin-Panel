@@ -1,0 +1,30 @@
+THIS IS TO EDIT SPECIFIC COHORT DATA
+
+<h2>Edit <%= @cohort.fullname %></h2>
+
+<%= form_for(@cohort, url: dashboard_course_cohort_path(@cohort.course_id, @cohort), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :teacher_id %> 
+    <%= f.collection_select(:teacher_id, Teacher.all, :id, :fullname ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :startdate, 'Starts ' %><br />
+    <%= f.datetime_select :startdate %>
+  </div>
+
+  <div class="field">
+    <%= f.label :enddate, 'Ends ' %><br />
+    <%= f.datetime_select :enddate %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

@@ -6,23 +6,29 @@ class Dashboard::Teacher::GradesController < ApplicationController
     end 
     #Don't forget to lock down your routes like this in other controllers!
     def show
-      @announcement = Announcement.find(params[:id])
-      if @announcement.cohort_id.to_s == params[:cohort_id]
+      @grade = Grade.find(params[:id])
+      @student = @grade.student_cohort.student
+      @cohort_id = params[:cohort_id]
+      if @grade.student_cohort.cohort_id.to_s == params[:cohort_id]
         render 'show'
       else 
-        redirect_to dashboard_cohort_announcements_path
+        redirect_to dashboard_cohort_grades_path
       end
     end
 
     def edit
-      @announcement = Announcement.find(params[:id])
+      @grade = Grade.find(params[:id])
+      @student = @grade.student_cohort.student
+      @cohort_id = params[:cohort_id]
     end 
 
     def update
-      @announcement = Announcement.find(params[:id])
-      if @announcement.update_attributes(announcement_params)
+      @grade = Grade.find(params[:id])
+      @student = @grade.student_cohort.student
+      @cohort_id = params[:cohort_id]
+      if @grade.update_attributes(grade_params)
         # Handle a successful update.
-        redirect_to dashboard_cohort_announcement_path(@announcement.cohort_id, @announcement.id)
+        redirect_to dashboard_cohort_grade_path(@cohort_id, @grade.id)
       else
         render 'edit'
       end
@@ -30,31 +36,31 @@ class Dashboard::Teacher::GradesController < ApplicationController
 
     def new
       @cohort = params[:cohort_id]
-      @announcement = Announcement.new
+      @grade = Grade.new
     end
 
     def create
-      @announcement = Announcement.new(announcement_params)
-      @announcement.cohort_id = params[:cohort_id]
-      if @announcement.save
+      @grade = Grade.new(grade_params)
+      @grade.cohort_id = params[:cohort_id]
+      if @grade.save
         # Handle a successful update.
-        redirect_to dashboard_cohort_announcements_path
+        redirect_to dashboard_cohort_grades_path
       else
         render 'new'
       end
     end
 
     def destroy
-      @announcement = Announcement.find(params[:id])
-      @announcement.destroy
+      @grade = Grade.find(params[:id])
+      @grade.destroy
       @cohort = Cohort.find(params[:cohort_id])
-      redirect_to dashboard_cohort_announcements_path(@cohort)
+      redirect_to dashboard_cohort_grades_path(@cohort)
     end 
 
     private
 
-    def announcement_params
-      params.require(:announcement).permit(:title, :body, :startdate, :enddate)
+    def grade_params
+      params.require(:grade).permit(:value)
     end
 
 end

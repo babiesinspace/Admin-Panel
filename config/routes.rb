@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
     authenticated :teacher do
         resources :cohorts, module: "teacher", :only => [:show, :index] do 
-          resources :grades, :only => [:edit, :destroy]
+          resources :grades
           resources :assignments
           resources :announcements
           resources :students, :only => [:show]

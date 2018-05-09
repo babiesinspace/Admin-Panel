@@ -1,5 +1,5 @@
 class Student < User
-  has_many :student_cohorts
+  has_many :student_cohorts, dependent: :destroy
   has_many :cohorts, through: :student_cohorts
   has_many :courses, through: :cohorts
   has_many :assignments, through: :cohorts
@@ -8,11 +8,13 @@ class Student < User
 
   #Returns an array of [cohort_id, grade]
   def get_grades
-    self.student_cohorts.pluck(:cohort_id, :grade)
+    arr = self.student_cohorts.joins(:cohort).pluck(:grade, :name, :cohort_id, :course_id)
+    arr.map! {|subarr| {grade: subarr[0] ||= 0, name: subarr[1], cohort_id: subarr[2], course_id: subarr[3]} }
   end
 
   def get_course_grade(cohort_id)
     stuco = StudentCohort.find_by(student_id: self.id, cohort_id: cohort_id).grade 
+    stuco.nil? ? "N/A" : stuco
   end 
 
 end

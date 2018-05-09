@@ -9,11 +9,8 @@ YOU ARE IN ADMIN COURSE SHOW
     <p>
       <%= link_to(cohort.fullname, dashboard_course_cohort_path(@course, cohort) )  %> 
       <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %>  
-    </p>
-    <ul>
-      <%= link_to("Students", dashboard_course_cohort_enrollees_path(@course, cohort.id) )  %>
       <%= link_to("Teacher", dashboard_teacher_path(cohort.teacher) )  %>    
-    </ul>
+    </p>
     <% if cohort.announcements.any? %>
       <ul>
         <h4>Announcements</h4>

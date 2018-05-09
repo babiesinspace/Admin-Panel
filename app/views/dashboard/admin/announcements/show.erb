@@ -1,0 +1,23 @@
+THIS SHOWS ALL THE ADMINS COHORT-SPECIFIC ASSIGNMENTS
+
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h3><%= @cohort.fullname %></h3>
+
+<h5><%= @announcement.title %></h5>
+
+<p>
+  <%= @announcement.body %>
+  <br><br>
+  Ends: <%= @announcement.enddate.strftime("%a %b %d, %Y %l:%M%p")  %>
+</p>
+<p>
+  <%= link_to("Edit", edit_dashboard_course_cohort_announcement_path(@cohort.course_id, @cohort, @announcement) )  %>
+  <%= link_to "Delete", dashboard_course_cohort_announcement_path(@cohort.course_id, @cohort, @announcement.id), data: { confirm: "Are you sure?" }, method: :delete %>
+</p>
+<p><%= link_to("Back to Announcements", dashboard_course_cohort_announcements_path(@cohort.course_id, @cohort) ) %></p>
+ 
+<div>
+  <%= link_to("Cohort Dashboard", dashboard_course_cohort_path(@cohort.course_id, @cohort) )  %>
+</div>

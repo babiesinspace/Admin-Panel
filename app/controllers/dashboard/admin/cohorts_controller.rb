@@ -6,12 +6,12 @@ class Dashboard::Admin::CohortsController < ApplicationController
     end
 
     def new
-
+      @course = Course.find(params[:course_id])
     end 
 
     def create
       course = Course.find(params[:course_id])
-      @cohort = course.cohorts.new(cohort_params)
+      @cohort = Cohort.new(cohort_params)
       if @cohort.save
         # Handle a successful update.
         redirect_to dashboard_course_path(course)
@@ -44,6 +44,6 @@ class Dashboard::Admin::CohortsController < ApplicationController
     private
 
     def cohort_params
-      params.require(:cohort).permit(:name, :startdate, :enddate, :teacher_id)
+      params.require(:cohort).permit(:name, :startdate, :enddate, :teacher_id, :course_id)
     end    
 end

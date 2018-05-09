@@ -28,6 +28,7 @@ Rails.application.routes.draw do
           resources :cohorts, except: [:index] do 
             resources :announcements
             resources :enrollees, only: [:show, :destroy]
+            post '/students', to: "cohorts#addstudents"
           end
         end
         resources :students, module: "admin" do 

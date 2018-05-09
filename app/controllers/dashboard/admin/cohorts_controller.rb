@@ -22,6 +22,7 @@ class Dashboard::Admin::CohortsController < ApplicationController
 
   def edit
     @cohort = Cohort.find(params[:id])
+    @unenrolled = Student.where.not(id: @cohort.students.map(&:id))
   end 
 
   def update
@@ -43,20 +44,23 @@ class Dashboard::Admin::CohortsController < ApplicationController
 
   def addstudents
     @cohort = Cohort.find(params[:cohort_id])
-    if !@cohort.student_cohorts.find_by(student_id: params[:student_cohorts][:student_id]).nil?
-      @cohort.errors[:enrolled] << "in this course already!"
-      @students = Student.all 
-      render 'edit'
-    else
-      @cohort.student_cohorts.create(enrollment_params)
-      redirect_to dashboard_course_cohort_path(@cohort.course_id, @cohort)
-    end  
+    if enrollment_params
+      params[:student_cohorts][:student_ids].each do |s_id|
+        if !s_id.empty?
+          @stuco = StudentCohort.new(student_id: s_id.to_i, cohort_id: @cohort.id)
+          if !@stuco.save
+            render 'edit'
+          end 
+        end 
+      end
+    end 
+    redirect_to dashboard_course_cohort_path(@cohort.course_id, @cohort)
   end 
 
   private
 
   def enrollment_params
-    params.require(:student_cohorts).permit(:student_id)
+    params.require(:student_cohorts).permit(student_ids:[])
   end
 
   def cohort_params

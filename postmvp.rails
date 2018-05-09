@@ -1,0 +1,13 @@
+<%= form_for(@teacher, url: dashboard_course_cohort_path(@teacher), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :cohort_id, "Reassign This Cohort To #{@teacher.fullname}" %> 
+    <%= f.grouped_collection_select :cohorts, @courses, :cohorts, :name, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+

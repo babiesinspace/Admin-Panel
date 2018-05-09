@@ -17,4 +17,10 @@ class Student < User
     stuco.nil? ? "N/A" : stuco
   end 
 
+  def self.with_no_enrollments_in(cohort)
+    includes(:student_cohorts).
+      references(:student_cohorts).
+      where.not(student_cohorts: { cohort_id: cohort.id })
+  end
+  
 end

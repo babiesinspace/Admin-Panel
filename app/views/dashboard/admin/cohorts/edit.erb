@@ -28,3 +28,30 @@ THIS IS TO EDIT SPECIFIC COHORT DATA
     <%= f.submit "Save" %>
   </div>
 <% end %>
+
+<h2>Add Students</h2>
+
+<% if @stuco && @stuco.errors.any? %>
+  <ul>
+    <% @stuco.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for(:student_cohorts, url: dashboard_course_cohort_students_path(@cohort.course_id, @cohort)) do |f| %>
+
+  <div class="field">
+    <%= f.label :student_id, "Enroll" %><br> 
+    <%= f.collection_check_boxes :student_ids, Student.where.not(id: @cohort.students.map(&:id)), :id, :fullname do |b| %>
+        <%= b.check_box %>
+        <%= b.label %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>
+

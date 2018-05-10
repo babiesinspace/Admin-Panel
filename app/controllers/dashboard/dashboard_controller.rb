@@ -6,7 +6,7 @@ class Dashboard::DashboardController < ApplicationController
     elsif current_user.class == Admin
       render 'index'
     else
-      redirect_to root
+      redirect_to root_path
     end
   end
   

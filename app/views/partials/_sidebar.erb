@@ -1,0 +1,43 @@
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li>
+        <%= link_to 'Trump University', dashboard_root_path, { :class => "sidebar-brand"}  %>
+      </li>
+      <li>
+        <%= link_to 'Dashboard', dashboard_root_path, { :class => "sidebar-brand"}  %>
+      </li>
+      <li>
+        <% if student_signed_in? %>
+            <!-- render student sidebar partial -->
+            <%= render 'partials/studentnav' %>
+          <li>
+            <%= link_to 'Log out', destroy_student_session_path, method: :delete %>  
+          </li>
+        <% elsif teacher_signed_in? %>
+        <!-- render teacher sidebar partial -->
+          <%= render 'partials/teachernav' %>
+          <li>
+            <%= link_to 'Log out', destroy_teacher_session_path, method: :delete %>
+          </li>
+            
+        <% elsif admin_signed_in? %>
+        <!-- render admin sidebar partial -->
+          <%= render 'partials/adminnav' %>
+          <li>
+            <%= link_to 'Log out', destroy_admin_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <div class="dropdown">
+            <a class="sidebar-brand  btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to("Student", new_student_session_path, { :class => "sidebar-brand dropdown-item"})  %> 
+              <%= link_to('Teacher Login', new_teacher_session_path, { :class => "dropdown-item sidebar-brand "})  %> 
+              <%= link_to('Administrator Login', new_admin_session_path, { :class => "sidebar-brand dropdown-item"})  %> 
+            </div>
+          </div>
+        <% end %>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>

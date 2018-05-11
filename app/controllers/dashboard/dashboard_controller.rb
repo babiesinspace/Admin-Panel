@@ -4,6 +4,7 @@ class Dashboard::DashboardController < ApplicationController
     if current_user.class == Student || current_user.class == Teacher
       redirect_to dashboard_cohorts_path
     elsif current_user.class == Admin
+      @courses = Course.all 
       render 'index'
     else
       redirect_to root_path

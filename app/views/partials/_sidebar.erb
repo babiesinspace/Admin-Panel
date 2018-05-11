@@ -30,9 +30,9 @@
           <div class="dropdown">
             <a class="sidebar-brand  btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <%= link_to("Student", new_student_session_path, { :class => "sidebar-brand dropdown-item"})  %> 
-              <%= link_to('Teacher Login', new_teacher_session_path, { :class => "dropdown-item sidebar-brand "})  %> 
-              <%= link_to('Administrator Login', new_admin_session_path, { :class => "sidebar-brand dropdown-item"})  %> 
+              <%= link_to("Student", new_student_session_path, { :class => "sidebar-brand dropdown-item list-group-flush small"})  %> 
+              <%= link_to('Teacher', new_teacher_session_path, { :class => "sidebar-brand dropdown-item list-group-flush small"})  %> 
+              <%= link_to('Administrator', new_admin_session_path, { :class => "sidebar-brand dropdown-item list-group-flush small"})  %> 
             </div>
           </div>
         <% end %>

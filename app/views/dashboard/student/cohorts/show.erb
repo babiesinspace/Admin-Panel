@@ -6,10 +6,9 @@ YOU ARE IN COHORTS SHOW
 
 <h3><%= @cohort.startdate.strftime("%B %d, %Y") %> - <%= @cohort.enddate.strftime("%B %d, %Y") %></h3>
 
-  <% if @cohort.grades %>
-    <% grade = @cohort.grades[0] %>
-    <h4> Grade: <%= link_to(grade.value, dashboard_grade_path(grade) )  %></h4>
-  <% end %>
+<% if current_user.get_course_grade(@cohort.id) %>
+  <h4> Grade: <%= current_user.get_course_grade(@cohort.id) %></h4>
+<% end %>
 
 <h4>Classmates</h4>
 <p>

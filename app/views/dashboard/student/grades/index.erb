@@ -5,13 +5,10 @@ YOU ARE IN GRADES INDEX
 <h3>Grades</h3>
 
 <p>
-  <% if @grades.any? %>
   <ul>
     <% @grades.each do |grade| %>
-    <li><%= link_to(grade.name, dashboard_grade_path(grade) )  %>: <%= grade.value %></li>
+      <li><%= link_to(grade[:name], dashboard_cohort_path(grade[:cohort_id]) )  %>: <%= grade[:grade] == 0 ? "Nothing yet!" : grade[:grade] %></li>
     <% end %>
   </ul>
-  <% else %>
-    No grades!
-  <% end %>
+
 </p>

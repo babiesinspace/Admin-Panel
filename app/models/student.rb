@@ -6,10 +6,10 @@ class Student < User
   has_many :announcements, through: :courses
   has_many :teachers, through: :courses
 
-  #Returns an array of [cohort_id, grade]
+  #Returns an hash of {id, grade, name, cohort, course}
   def get_grades
-    arr = self.student_cohorts.joins(:cohort).pluck(:grade, :name, :cohort_id, :course_id)
-    arr.map! {|subarr| {grade: subarr[0] ||= 0, name: subarr[1], cohort_id: subarr[2], course_id: subarr[3]} }
+    arr = self.student_cohorts.joins(:cohort).pluck(:id, :grade, :name, :cohort_id, :course_id)
+    arr.map! {|subarr| {grade_id: subarr[0], grade: subarr[1] ||= 0, name: subarr[2], cohort_id: subarr[3], course_id: subarr[4]} }
   end
 
   def get_course_grade(cohort_id)
@@ -22,5 +22,5 @@ class Student < User
       references(:student_cohorts).
       where.not(student_cohorts: { cohort_id: cohort.id })
   end
-  
+
 end

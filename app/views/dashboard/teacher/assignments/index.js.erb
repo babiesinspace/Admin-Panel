@@ -1,0 +1,17 @@
+$("#teach-assign-show").on("ajax:success", checkForAssignments())
+
+function checkForAssignments() {
+  if( $("#<%= @cohort.id %>-assign-partial").length ) {
+    hideAssignments()
+  } else {
+    showAssignments()
+  }
+}
+
+function showAssignments() {
+  $("<%= j render 'partials/teachassignshow' %>").insertAfter("#cohort-<%=@cohort.id%>-teach-show")
+}
+
+function hideAssignments() {
+  $("#<%= @cohort.id %>-assign-partial").remove()
+}

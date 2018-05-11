@@ -1,0 +1,30 @@
+<div class="container" id="assign-<%= @assignment.id %>-edit">
+  <h2>Edit <%= @assignment.title  %></h2>
+
+  <%= form_for(@assignment, url: dashboard_cohort_assignment_path(@assignment), html: { method: :put }, :remote => true, id: "edit-#{@assignment.id}-assign-form") do |f| %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :instructions %> 
+      <%= f.text_field :instructions %>
+    </div>
+
+    <div class="field">
+      <%= f.label :startdate, 'Starts ' %><br />
+      <%= f.datetime_select :startdate %>
+    </div>
+
+    <div class="field">
+      <%= f.label :enddate, 'Due ' %><br />
+      <%= f.datetime_select :enddate %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>

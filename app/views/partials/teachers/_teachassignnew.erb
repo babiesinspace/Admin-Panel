@@ -1,0 +1,30 @@
+<div class="container" id="<%= @cohortid %>-assign-new-part">
+  <h2>Assign Work</h2>
+
+  <%= form_for(:assignment, url: dashboard_cohort_assignments_path, :remote => true, id: "#{@cohortid}-new-assign-form") do |f| %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :instructions %> 
+      <%= f.text_field :instructions %>
+    </div>
+
+    <div class="field">
+      <%= f.label :startdate, 'Starts ' %><br />
+      <%= f.datetime_select :startdate %>
+    </div>
+
+    <div class="field">
+      <%= f.label :enddate, 'Due ' %><br />
+      <%= f.datetime_select :enddate %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+</div>

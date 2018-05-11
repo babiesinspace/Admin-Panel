@@ -1,0 +1,14 @@
+$("<%= @assignment.cohort_id %>new-assign-form").on("ajax:success", checkForForm())
+
+function checkForForm() {
+  hideAssignmentForm();
+  addAssignment();
+}
+
+function hideAssignmentForm() {
+  $("#<%= @cohort.id %>-assign-new-part").remove()
+}
+
+function addAssignment() {
+  $("#<%= @cohort.id %>-assign-partial").append("<%= j (render partial: 'partials/teachers/teachassignshow', object: @cohort )%>")
+}

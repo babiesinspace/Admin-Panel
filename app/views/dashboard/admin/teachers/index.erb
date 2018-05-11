@@ -1,0 +1,19 @@
+THIS SHOWS ALL OF THE TEACHERS IN THE DATABASE - ADMIN VIEW
+
+<h1>Employee Directory</h1>
+
+<ul>
+  <% @teachers.each do |teacher| %>
+    <li>
+      <%= link_to teacher.fullname, dashboard_teacher_path(teacher.id) %>
+      <% if teacher.cohorts.any? %>
+        <% teacher.cohorts.each do |cohort|%>
+          | <%= link_to cohort.fullname, dashboard_course_cohort_path(cohort.course_id, cohort.id) %>
+        <% end %> 
+      <% else %>
+        | <strong>No Current Cohorts</strong> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+

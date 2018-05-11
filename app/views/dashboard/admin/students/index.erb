@@ -1,0 +1,18 @@
+THIS SHOWS ALL OF THE STUDENTS IN THE DATABASE - ADMIN VIEW
+
+<h1>Enrollment</h1>
+
+<ul>
+  <% @students.each do |student| %>
+    <li>
+      <%= link_to student.fullname, dashboard_student_path(student.id) %>
+      <% if student.cohorts.any? %>
+        <% student.cohorts.each do |cohort|%>
+          | <%= cohort.fullname %>
+        <% end %> 
+      <% else %>
+        | <strong>UNREGISTERED</strong> 
+      <% end %>
+    </li>
+  <% end %>
+</ul>

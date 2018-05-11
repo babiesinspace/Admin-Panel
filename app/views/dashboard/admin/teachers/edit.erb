@@ -1,0 +1,29 @@
+<h2>Employee Information - <%= @teacher.fullname %></h2>
+
+<h4>Age - <%= @teacher.age %></h4>
+<h4>Highest Education - <%= @teacher.education %></h4>
+<h4>Income - $<%= @teacher.salary.income %></h4>
+
+<%= form_for(@teacher.salary, url: dashboard_teacher_path(@teacher), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :income, "Raise Pay" %> 
+    <%= f.number_field :income %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+
+<h3>Cohorts in</h3>
+<ul>
+  <% @teacher.cohorts.each do |cohort| %>
+    <li><%= cohort.fullname %> | <%= link_to "Cohort Dashboard", dashboard_course_cohort_path(cohort.course_id, cohort) %> | <%= link_to "Drop Cohort", dashboard_course_cohort_path(cohort.course_id, cohort), data: { confirm: "Are you sure? This will remove the cohort from the directory and un-enroll all students. If they are not enrolled in another course, this will remove them from the system!" }, method: :delete %></li>
+  <% end %>
+</ul>
+
+<h3><%= link_to "Let Go", dashboard_teacher_path(@teacher), data: { confirm: "Are you sure? This will remove the teacher and all of their data from the system!" }, method: :delete %> </h3>>
+
+<%= link_to "Back", :back %>

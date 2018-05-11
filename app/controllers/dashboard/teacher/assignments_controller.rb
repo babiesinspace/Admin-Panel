@@ -4,6 +4,10 @@ class Dashboard::Teacher::AssignmentsController < ApplicationController
     #Better to call Assignments?
     def index
       @cohort = Cohort.find(params[:cohort_id])
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end 
 
     def show

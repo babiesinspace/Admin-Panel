@@ -1,0 +1,38 @@
+<h2>Registration - <%= @student.fullname %></h2>
+
+<h4>Age - <%= @student.age %></h4>
+<h4>Highest Education - <%= @student.education %></h4>
+
+
+<h3>Enrolled in</h3>
+<ul>
+  <% @student.cohorts.each do |cohort| %>
+    <li><%= cohort.fullname %> | Grade: <strong><%= @student.get_course_grade(cohort.id) %></strong> | <%= link_to "Unregister", dashboard_course_cohort_enrollee_path(cohort.course_id, cohort, @student.id), data: { confirm: "Are you sure? This will remove the student from this cohort. If they are not enrolled in another course, this will remove them from the system!" }, method: :delete %></li>
+  <% end %>
+</ul>
+
+<h3>Add to Cohort</h3>
+<% if @student.errors.any? %>
+  <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for(:student_cohorts, url: dashboard_student_cohorts_path(@student)) do |f| %>
+
+  <div class="field">
+    <%= f.label :cohort_id, "Enroll" %> 
+    <%= f.grouped_collection_select :cohort_id, @courses, :cohorts, :name, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Expel this Student</h3>
+
+<p><%= link_to "Expel", dashboard_student_path(@student), data: { confirm: "Are you sure? This will remove the student and all of their data from the system!" }, method: :delete %> </p>
+
+<%= link_to "Back", :back %>

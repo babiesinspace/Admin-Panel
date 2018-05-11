@@ -6,16 +6,17 @@ Rails.application.routes.draw do
   root to: "pages#index"
   namespace :dashboard do
     authenticated :student do
-        resources :grades, module: "student", :only => [:show, :index]
+        resources :grades, module: "student", :only => [:index]
         resources :cohorts, module: "student", :only => [:show, :index] do 
           resources :assignments, :only => [:show, :index]
           resources :announcements, :only => [:show, :index]
+          resources :grades, only: [:show]
         end
     end
 
     authenticated :teacher do
         resources :cohorts, module: "teacher", :only => [:show, :index] do 
-          resources :grades
+          resources :grades, :only => [:show, :index, :edit, :update, :destroy]
           resources :assignments
           resources :announcements
           resources :students, :only => [:show]
@@ -25,9 +26,16 @@ Rails.application.routes.draw do
 
     authenticated :admin do
         resources :courses, module: "admin" do 
-          resources :cohorts
-          resources :announcements
+          resources :cohorts, except: [:index] do 
+            resources :announcements
+            resources :enrollees, only: [:show, :destroy]
+            post '/students', to: "cohorts#addstudents"
+          end
         end
+        resources :students, module: "admin" do 
+          post '/cohorts', to: "students#addcohort"
+        end 
+        resources :teachers, module: "admin"
     end
 
     root to: "dashboard#index"

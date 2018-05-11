@@ -3,11 +3,11 @@ class Dashboard::Student::GradesController < ApplicationController
 
   def index
     @student = current_user
-    @grades = @student.grades
+    @grades = @student.get_grades
   end 
 
   def show
-    @grade = Grade.find(params[:id])
+    @grade = StudentCohort.find(params[:id]).student.get_course_grade(params[:cohort_id])
   end
 
 end

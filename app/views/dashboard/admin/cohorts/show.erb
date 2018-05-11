@@ -1,0 +1,52 @@
+THIS IS SPECIFIC COHORT INFO FOR ADMIN
+
+<h1><%= @cohort.course.name %> - <%= @cohort.name %></h1>
+
+<h3>With <%= link_to(@cohort.teacher.fullname, dashboard_teacher_path(@cohort.teacher_id)) %></h3>
+
+<h3><%= @cohort.startdate.strftime("%B %d, %Y") %> - <%= @cohort.enddate.strftime("%B %d, %Y") %></h3>
+
+<h4>Students</h4>
+<p>
+  <% if @cohort.students.any? %>
+  <ul>
+    <% @cohort.students.each do |student| %>
+      
+      <li><%= link_to(student.fullname, dashboard_course_cohort_enrollee_path(@cohort.course_id, @cohort.id, student.id) )  %></li>
+   
+    <% end %>
+  </ul>
+  <% else %>
+    No one enrolled at the moment!
+    
+  <% end %>
+</p>
+
+<h4>Assignments</h4>
+<p>
+  <% if @cohort.assignments.any? %>
+  <ul>
+    <% @cohort.assignments.each do |assignment| %>
+    <li><%= assignment.title  %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    Nothing due at the moment!
+  <% end %>
+</p>
+
+<h4><%= link_to("Announcements", dashboard_course_cohort_announcements_path(@cohort.course_id, @cohort) )  %></h4>
+<p>
+  <% if @cohort.announcements.any? %>
+  <ul>
+    <% @cohort.announcements.each do |announcement| %>
+    <li><%= link_to(announcement.title, dashboard_course_cohort_announcement_path(@cohort.course_id, @cohort, announcement.id) )  %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    No announcements!
+  <% end %>
+</p>
+<%= link_to("Edit this Cohort", edit_dashboard_course_cohort_path(@cohort.course_id, @cohort) )  %>
+<%= link_to "Delete this Cohort", dashboard_course_cohort_path(@cohort.course_id, @cohort), data: { confirm: "Are you sure? This will erase the cohort!" }, method: :delete %>
+<%= link_to("Back to Course View", dashboard_course_path(@cohort.course_id) )  %>

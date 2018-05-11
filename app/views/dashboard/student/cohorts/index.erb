@@ -9,8 +9,8 @@ YOU ARE IN Student COHORTS INDEX
     <%= link_to(cohort.name, dashboard_cohort_path(cohort) )  %>
     <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %> 
     <%= cohort.teacher.fullname %>   
-    <% if cohort.grades %>
-      <h4> Grade: <%= cohort.grades[0].value %></h4>
+    <% if @student.get_course_grade(cohort.id) %>
+      <h4> Grade: <%= @student.get_course_grade(cohort.id) %></h4>
     <% end %>
   </p>
 

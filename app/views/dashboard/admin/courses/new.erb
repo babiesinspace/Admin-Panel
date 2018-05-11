@@ -1,0 +1,25 @@
+THIS IS TO CREATE A SPECIFIC COURSE
+
+<h2>Create Course</h2>
+
+<%= form_for(:course, url: dashboard_courses_path) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hours %> 
+    <%= f.number_field :hours %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+<% end %>

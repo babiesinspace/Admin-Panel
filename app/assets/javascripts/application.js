@@ -10,9 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
-//= require turbolinks
-//= require_tree .
+//= require popper
+//= require rails-ujs
+//= require jquery
 //= require toastr
+//= require bootstrap
+//= require_self 
+//= require_tree .
 
+$('.dropdown-toggle').dropdown()

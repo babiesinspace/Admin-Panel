@@ -1,0 +1,14 @@
+THIS SHOWS TEACHER SPECIFIC INFO - ADMIN
+
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h1><%= @teacher.fullname %></h1>
+
+<% @teacher.cohorts.each do |cohort| %>
+  <h3><%= link_to(cohort.fullname, dashboard_course_cohort_path(cohort.course_id, cohort) )  %></h3>
+<% end %>
+
+<p>
+  <%= link_to("Edit Employee Info", edit_dashboard_teacher_path(@teacher) )  %>
+</p>

@@ -16,7 +16,7 @@ THIS SHOWS ALL THE TEACHERS COHORT-SPECIFIC ASSIGNMENTS
   <%= link_to("Edit", edit_dashboard_cohort_announcement_path(@announcement) )  %>
   <%= link_to "Delete", dashboard_cohort_announcement_path(@announcement.cohort_id, @announcement.id), data: { confirm: "Are you sure?" }, method: :delete %>
 </p>
-<p><%= link_to("Back to Announcements", dashboard_cohort_announcements_path ) %></p>
+<p><%= link_to("Back to Announcements", dashboard_cohort_announcements_path(@announcement.cohort_id) ) %></p>
  
 <div>
   <%= link_to("Cohort Dashboard", dashboard_cohort_path(@announcement.cohort_id) )  %>

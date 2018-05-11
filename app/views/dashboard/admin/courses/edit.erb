@@ -1,0 +1,33 @@
+THIS IS TO EDIT A SPECIFIC COURSE
+
+<h2>Edit <%= @course.name  %></h2>
+
+<%= form_for(@course, url: dashboard_course_path(@course), html: { method: :put }) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hours %> 
+    <%= f.number_field :hours %>
+  </div>
+
+  <div class="field">
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save" %>
+  </div>
+
+<% end %>
+
+<h3>Erase this Course</h3>
+
+<p><%= button_to "Delete", dashboard_course_path(@course.id), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<p><%= link_to("Back to courses", dashboard_courses_path ) %></p>
+ 

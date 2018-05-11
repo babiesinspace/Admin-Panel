@@ -6,10 +6,8 @@ class Dashboard::Teacher::GradesController < ApplicationController
     end 
     #Don't forget to lock down your routes like this in other controllers!
     def show
-      @grade = Grade.find(params[:id])
-      @student = @grade.student_cohort.student
-      @cohort_id = params[:cohort_id]
-      if @grade.student_cohort.cohort_id.to_s == params[:cohort_id]
+      @grade = StudentCohort.find(params[:id])
+      if @grade.cohort_id.to_s == params[:cohort_id]
         render 'show'
       else 
         redirect_to dashboard_cohort_grades_path
@@ -17,50 +15,36 @@ class Dashboard::Teacher::GradesController < ApplicationController
     end
 
     def edit
-      @grade = Grade.find(params[:id])
-      @student = @grade.student_cohort.student
-      @cohort_id = params[:cohort_id]
+      @grade = StudentCohort.find(params[:id])
     end 
 
     def update
-      @grade = Grade.find(params[:id])
-      @student = @grade.student_cohort.student
-      @cohort_id = params[:cohort_id]
+      @grade = StudentCohort.find(params[:id])
       if @grade.update_attributes(grade_params)
         # Handle a successful update.
-        redirect_to dashboard_cohort_grade_path(@cohort_id, @grade.id)
+        redirect_to dashboard_cohort_grade_path(@grade.cohort_id, @grade.id)
       else
         render 'edit'
       end
     end
 
-    def new
-      @cohort = params[:cohort_id]
-      @grade = Grade.new
-    end
-
-    def create
-      @grade = Grade.new(grade_params)
-      @grade.cohort_id = params[:cohort_id]
-      if @grade.save
-        # Handle a successful update.
-        redirect_to dashboard_cohort_grades_path
-      else
-        render 'new'
-      end
-    end
-
     def destroy
-      @grade = Grade.find(params[:id])
+      #Find the student and delete their join table row - no longer associating them with that cohort
+      @grade = StudentCohort.find(params[:id])
+      student = Student.find(@grade.student_id)
+      cohort_id = @grade.cohort_id
       @grade.destroy
-      @cohort = Cohort.find(params[:cohort_id])
-      redirect_to dashboard_cohort_grades_path(@cohort)
+      #if the student doesn't have any other cohorts they have signed up for, delete them from the database
+      if !student.cohorts.any?
+        student.destroy
+      end
+      redirect_to dashboard_cohort_grades_path(cohort_id)
     end 
 
     private
 
     def grade_params
-      params.require(:grade).permit(:value)
+      params.require(:student_cohort).permit(:grade)
     end
 
 end

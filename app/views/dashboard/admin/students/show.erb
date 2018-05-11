@@ -1,0 +1,21 @@
+THIS SHOWS STUDENT SPECIFIC INFO - ADMIN
+
+
+<h1>Welcome, <%= current_user.fullname %></h1>
+
+<h1><%= @student.fullname %></h1>
+
+<% @student.get_grades.each do |grade_hash| %>
+  <h3><%= link_to(grade_hash[:name], dashboard_course_cohort_path(grade_hash[:course_id], grade_hash[:cohort_id]) )  %></h3>
+  <h3>Grade: <%= grade_hash[:grade]  %></h3>
+  <div>
+    <%= link_to "Unregister", dashboard_course_cohort_enrollee_path(grade_hash[:course_id], grade_hash[:cohort_id], @student.id), data: { confirm: "Are you sure? This will remove the student from this cohort. If they are not enrolled in another course, this will remove them from the system!" }, method: :delete %>  
+  </div>
+  <div>
+    <%= link_to("Cohort Dashboard", dashboard_course_cohort_path(grade_hash[:course_id], grade_hash[:cohort_id]) )  %>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to("Edit Student Info", edit_dashboard_student_path(@student) )  %>
+</p>

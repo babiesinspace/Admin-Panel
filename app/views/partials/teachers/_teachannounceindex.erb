@@ -1,7 +1,7 @@
 <div class="container" id="<%= @cohort.id %>-announce-partial">
   <% @cohort.announcements.each do |announcement| %>
       <p id="<%= announcement.id %>-announce-links">
-        <%= link_to(announcement.title, dashboard_cohort_announcement_path(@cohort.id, announcement.id) )  %>
+        <%= link_to(announcement.title, dashboard_cohort_announcement_path(@cohort.id, announcement.id), remote: true, id: "show-#{announcement.id}-announce" )  %>
         <%= link_to("Edit", edit_dashboard_cohort_announcement_path(@cohort.id, announcement.id), remote: true, id: "edit-#{announcement.id}-announce" )  %>
         <%= link_to "Delete", dashboard_cohort_announcement_path(@cohort.id, announcement.id), data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
       </p>

@@ -1,4 +1,4 @@
-$("#teach-assign-show").on("ajax:success", checkForAssignments())
+$("#teach-assign-index").on("ajax:success", checkForAssignments())
 
 function checkForAssignments() {
   if( $("#<%= @cohort.id %>-assign-partial").length ) {
@@ -9,7 +9,7 @@ function checkForAssignments() {
 }
 
 function showAssignments() {
-  $("<%= j render 'partials/teachers/teachassignshow' %>").insertAfter("#cohort-<%=@cohort.id%>-teach-show")
+  $("<%= j render 'partials/teachers/teachassignindex' %>").insertAfter("#cohort-<%=@cohort.id%>-teach-show")
 }
 
 function hideAssignments() {

@@ -1,0 +1,17 @@
+$("#show-<%= @assignment.id %>-assign").on("ajax:success", checkIfAssignment())
+
+function checkIfAssignment() {
+  if( $("#show-<%= @assignment.id %>-assign-container").length ) {
+    hideAssignment()
+  } else {
+    showAssignment()
+  }
+}
+
+function showAssignment() {
+  $("<%= j render 'partials/teachers/teachassignshow' %>").insertAfter("#<%= @assignment.id %>-assign-links")
+}
+
+function hideAssignment() {
+  $("#show-<%= @assignment.id %>-assign-container").remove()
+}

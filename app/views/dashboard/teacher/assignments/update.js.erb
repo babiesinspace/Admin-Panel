@@ -8,5 +8,5 @@ function hideAssignmentForm() {
 }
 
 function replaceAssignment() {
-  $("#<%= @cohort.id %>-assign-partial").replaceWith("<%= j (render partial: 'partials/teachers/teachassignshow', object: @cohort )%>")
+  $("#<%= @cohort.id %>-assign-partial").replaceWith("<%= j (render partial: 'partials/teachers/teachassignindex', object: @cohort )%>")
 }

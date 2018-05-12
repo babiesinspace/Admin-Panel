@@ -1,12 +1,12 @@
-$("#edit-<%= @announcement.id %>-announce-form").on("ajax:success", hideannouncementForm())
+$("#edit-<%= @announcement.id %>-announce-form").on("ajax:success", hideAnnouncementForm())
 
 
 
-function hideannouncementForm() {
+function hideAnnouncementForm() {
   $("#announce-<%= @announcement.id %>-edit").remove()
-  replaceannouncement()
+  replaceAnnouncement()
 }
 
-function replaceannouncement() {
+function replaceAnnouncement() {
   $("#<%= @cohort.id %>-announce-partial").replaceWith("<%= j (render partial: 'partials/teachers/teachannounceindex', object: @cohort )%>")
 }

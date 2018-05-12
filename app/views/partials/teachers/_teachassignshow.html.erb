@@ -1,16 +1,9 @@
-<div class="container" id="<%= @cohort.id %>-assign-partial">
-  <% @cohort.assignments.each do |assignment| %>
-      <p id="<%= assignment.id %>-assign-links">
-        <%= link_to(assignment.title, dashboard_cohort_assignment_path(@cohort.id, assignment.id) )  %> | 
-        <%= link_to("Edit", edit_dashboard_cohort_assignment_path(@cohort.id, assignment.id), remote: true, id: "edit-#{assignment.id}-assign")  %> | 
-        <%= link_to "Delete", dashboard_cohort_assignment_path(@cohort.id, assignment.id), data: { confirm: "Are you sure?" }, method: :delete, remote: true, id: "delete-#{assignment.id}-assign" %>
-      </p>
-    <% end %>
+<div id="show-<%= @assignment.id %>-assign-container">
+  <h5><%= @assignment.title %></h5>
 
-  <div id="<%= @cohort.id %>-new-work">
-    <%= link_to("New Assignment", new_dashboard_cohort_assignment_path(@cohort), remote: true, id: "#{@cohort.id}-assign-new" )  %>
-  </div>
-  <div>
-    <%= link_to("Cohort Dashboard", dashboard_cohort_path(@cohort.id) )  %>
-  </div>
+  <p>
+    <%= @assignment.instructions %>
+    <br><br>
+    Due: <%= @assignment.enddate.strftime("%B %d, %Y")  %>
+  </p>
 </div>

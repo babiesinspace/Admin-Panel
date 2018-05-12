@@ -3,6 +3,10 @@ class Dashboard::Teacher::AnnouncementsController < ApplicationController
 
     def index
       @cohort = Cohort.find(params[:cohort_id])
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end 
     #Don't forget to lock down your routes like this in other controllers!
     def show
@@ -20,25 +24,33 @@ class Dashboard::Teacher::AnnouncementsController < ApplicationController
 
     def update
       @announcement = Announcement.find(params[:id])
+      @cohort = @announcement.cohort
       if @announcement.update_attributes(announcement_params)
         # Handle a successful update.
-        redirect_to dashboard_cohort_announcement_path(@announcement.cohort_id, @announcement.id)
+        respond_to do |format|
+          format.html { redirect_to dashboard_cohort_announcement_path(@cohort, @announcement.id) }
+          format.js
+        end
       else
         render 'edit'
       end
     end
 
     def new
-      @cohort = params[:cohort_id]
+      @cohortid = params[:cohort_id]
       @announcement = Announcement.new
     end
 
     def create
+      @cohort = Cohort.find(params[:cohort_id])
       @announcement = Announcement.new(announcement_params)
-      @announcement.cohort_id = params[:cohort_id]
+      @announcement.cohort = @cohort 
       if @announcement.save
         # Handle a successful update.
-        redirect_to dashboard_cohort_announcements_path
+        respond_to do |format|
+          format.html { redirect_to dashboard_cohort_announcements_path }
+          format.js
+        end
       else
         render 'new'
       end
@@ -48,7 +60,10 @@ class Dashboard::Teacher::AnnouncementsController < ApplicationController
       @announcement = Announcement.find(params[:id])
       @announcement.destroy
       @cohort = Cohort.find(params[:cohort_id])
-      redirect_to dashboard_cohort_announcements_path(@cohort)
+      respond_to do |format|
+        format.html {redirect_to dashboard_cohort_announcements_path(@cohort)}
+        format.js
+      end
     end 
 
     private

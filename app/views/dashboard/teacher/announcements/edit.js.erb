@@ -1,0 +1,17 @@
+$("#announce-<%= @announcement.id %>-edit").on("ajax:success", checkForForm())
+
+function checkForForm() {
+  if( $("#announce-<%= @announcement.id %>-edit").length ) {
+    hideannounceEditForm()
+  } else {
+    showannounceEditForm()
+  }
+}
+
+function showannounceEditForm() {
+  $("<%= j render 'partials/teachers/teachannounceedit' %>").insertAfter("#<%= @announcement.id %>-announce-links")
+}
+
+function hideannounceEditForm() {
+  $("#announce-<%= @announcement.id %>-edit").remove()
+}

@@ -10,5 +10,5 @@ function hideAssignmentForm() {
 }
 
 function addAssignment() {
-  $("#<%= @cohort.id %>-assign-partial").append("<%= j (render partial: 'partials/teachers/teachassignshow', object: @cohort )%>")
+  $("#<%= @cohort.id %>-assign-partial").replaceWith("<%= j (render partial: 'partials/teachers/teachassignshow', object: @cohort )%>")
 }

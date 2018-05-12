@@ -1,0 +1,30 @@
+<div class="container" id="announce-<%= @announcement.id %>-edit">
+  <h2>Edit <%= @announcement.title  %></h2>
+
+  <%= form_for(@announcement, url: dashboard_cohort_announcement_path(@announcement), html: { method: :put }, :remote => true, id: "edit-#{@announcement.id}-announce-form") do |f| %>
+
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body %> 
+      <%= f.text_field :body %>
+    </div>
+
+    <div class="field">
+      <%= f.label :startdate, 'Starts ' %><br />
+      <%= f.datetime_select :startdate %>
+    </div>
+
+    <div class="field">
+      <%= f.label :enddate, 'Due ' %><br />
+      <%= f.datetime_select :enddate %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  <% end %>
+</div>

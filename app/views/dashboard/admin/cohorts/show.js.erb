@@ -1,0 +1,17 @@
+$("#<%= @course.id %>-course-links").on("ajax:success", checkForCourses())
+
+function checkForCourses() {
+  if( $("#admin-<%= @course.id %>-course-show").length ) {
+    hideCourses()
+  } else {
+    showCourses()
+  }
+}
+
+function showCourses() {
+  $("<%= j render 'partials/admins/admincourseshow' %>").insertAfter("#<%= @course.id %>-course-links")
+}
+
+function hideCourses() {
+  $("#admin-<%= @course.id %>-course-show").remove()
+}

@@ -1,0 +1,5 @@
+$("student-add-<%= @cohort.id %>").on("ajax:success", addCohort())
+
+function addCohort() {
+  $("#student-cohorts-partial").replaceWith("<%= j (render partial: 'partials/students/studentcohortsindex') %>")
+}

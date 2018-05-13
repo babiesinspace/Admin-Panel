@@ -1,0 +1,15 @@
+<div id="student-cohorts-partial">
+  <h4>Your Classes:</h4>
+  <% @mycohorts.each do |cohort| %>
+
+    <p>
+      <%= link_to(cohort.fullname, dashboard_cohort_path(cohort) )  %>
+      <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %> 
+      <%= cohort.teacher.fullname %>   
+      <% if @student.get_course_grade(cohort.id) %>
+        <h4> Grade: <%= @student.get_course_grade(cohort.id) %></h4>
+      <% end %>
+    </p>
+
+  <% end %>
+</div>

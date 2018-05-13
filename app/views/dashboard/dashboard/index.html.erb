@@ -1,8 +1,4 @@
 <h1>This is the dashboard homepage</h1>
 
-<h2><%= link_to("Course Directory", dashboard_courses_path )  %> </h2>
-
-<h2><%= link_to("Registration", dashboard_students_path )  %> </h2>
-
-<h2><%= link_to("Employee Directory", dashboard_teachers_path )  %> </h2>
+<h2><%= link_to("Course Directory", dashboard_courses_path, remote: true, id: "course-directory-link" )  %> </h2>
 

@@ -2,7 +2,11 @@ class Dashboard::Admin::CoursesController < ApplicationController
   before_action :authenticate_admin!
 
     def index
-      @courses = Course.all  
+      @courses = Course.all 
+      respond_to do |format|
+        format.html
+        format.js
+      end       
     end 
 
     def show

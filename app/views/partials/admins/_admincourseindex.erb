@@ -1,0 +1,17 @@
+<div class="container" id="course-index-partial">
+  <% if @courses.any? %>
+    <% @courses.each do |course| %>
+
+      <p id="<%= course.id %>-course-links">
+        <%= link_to(course.name, dashboard_course_path(course), remote: true )  %> 
+        <%= course.level %> 
+        <%= course.hours %> Hours 
+      </p>
+
+    <% end %>
+  <% else %>
+    <h4>Nothing right now! </h4>
+  <% end %>
+
+  <%= link_to("Add New Course", new_dashboard_course_path )  %>
+</div>

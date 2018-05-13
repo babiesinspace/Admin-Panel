@@ -1,0 +1,17 @@
+$("#course-directory-link").on("ajax:success", checkForCourses())
+
+function checkForCourses() {
+  if( $("#course-index-partial").length ) {
+    hideCourses()
+  } else {
+    showCourses()
+  }
+}
+
+function showCourses() {
+  $("<%= j render 'partials/admins/admincourseindex' %>").insertAfter("#course-directory-link")
+}
+
+function hideCourses() {
+  $("#course-index-partial").remove()
+}

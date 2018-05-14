@@ -1,0 +1,5 @@
+$("student-remove-<%= @cohort.id %>").on("ajax:success", removeCohort())
+
+function removeCohort() {
+  $("#student-cohorts-partial").replaceWith("<%= j (render partial: 'partials/students/studentcohortsindex') %>")
+}

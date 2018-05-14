@@ -1,17 +1,19 @@
-YOU ARE IN Student COHORTS INDEX
-
 <h1>Welcome, <%= @student.fullname %></h1>
+<div class="row">
+  <div class="col-sm-9">
+    <%= render "partials/students/studentcohortsindex" %>  
+  </div>
+  <div class="col-sm">
+    <h4>Register</h4>
+    <% @othercohorts.each do |cohort| %>
 
-<%= render "partials/students/studentcohortsindex" %>
+      <p>
+        <strong><%= cohort.fullname %></strong>: <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %><br>
+        With <%= cohort.teacher.fullname %> 
+        <%= link_to "Sign Up", dashboard_cohorts_path(id: cohort.id), remote:true, id:"student-add-#{cohort.id}", data: { confirm: "Are you sure?" }, method: :post %>
+      </p>
 
-<h4>Register</h4>
-<% @othercohorts.each do |cohort| %>
-
-  <p>
-    <strong><%= cohort.fullname %></strong>: <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %><br>
-    With <%= cohort.teacher.fullname %> 
-    <%= link_to "Sign Up", dashboard_cohorts_path(id: cohort.id), remote:true, id:"student-add-#{cohort.id}", data: { confirm: "Are you sure?" }, method: :post %>
-  </p>
-
-<% end %>
+    <% end %>
+  </div>
+</div>
 

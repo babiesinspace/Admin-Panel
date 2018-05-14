@@ -7,7 +7,7 @@ class Dashboard::Admin::AnnouncementsController < ApplicationController
 
     def show
       @cohort = Cohort.find(params[:cohort_id])
-      @announcement = @cohort.announcements.find(params[:id])
+      @announcement = Announcement.find(params[:id])
     end
 
     def new

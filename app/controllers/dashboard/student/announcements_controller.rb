@@ -11,7 +11,7 @@ class Dashboard::Student::AnnouncementsController < ApplicationController
   def show
     @cohort = Cohort.find(params[:cohort_id])
     @announcement = Announcement.find(params[:id])
-    if @announcement.cohort_id.to_s == @cohort.id
+    if @announcement.cohort_id == @cohort.id
       render 'show'
     else 
       redirect_to dashboard_cohort_announcements_path

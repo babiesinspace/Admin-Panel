@@ -8,10 +8,12 @@ YOU ARE IN STUDENT/SPECIFIC-COHORT/ANNOUNCEMENTS
   <% if @announcements.any? %>
   <ul>
     <% @announcements.each do |announcement| %>
-    <li><%= link_to(announcement.title, dashboard_cohort_announcement_path(announcement.cohort_id, announcement.id) )  %></li>
+      <li><%= link_to(announcement.title, dashboard_cohort_announcement_path(announcement.cohort_id, announcement.id) )  %></li>
     <% end %>
   </ul>
   <% else %>
     No announcements!
   <% end %>
 </p>
+
+<%= link_to "Back", :back %>

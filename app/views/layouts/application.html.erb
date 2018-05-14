@@ -8,7 +8,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
 <div id="wrapper">
 
   <!-- Sidebar -->
@@ -16,11 +15,15 @@
   <!-- /#sidebar-wrapper -->
 
   <!-- Page Content -->
+  <div id="trump"></div>
   <div id="page-content-wrapper">
     <%= yield %>
   </div>
   <!-- /#page-content-wrapper -->
-
+    <blockquote class="blockquote text-center">
+      <p class="mb-0"><em>Is everything Donald Trump does the <strong>BEST?</strong> He wouldn’t put his name on this if it wasn’t right?</em></p>
+      <footer class="blockquote-footer">Some Guy</footer>
+    </blockquote>
 </div>
 <!-- /#wrapper -->
 

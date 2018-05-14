@@ -1,5 +1,3 @@
-YOU ARE IN COHORTS SHOW
-
 <h1><%= @cohort.course.name %> - <%= @cohort.name %></h1>
 
 <h3>With <%= @cohort.teacher.fullname %></h3>
@@ -9,42 +7,48 @@ YOU ARE IN COHORTS SHOW
 <% if current_user.get_course_grade(@cohort.id) %>
   <h4> Grade: <%= current_user.get_course_grade(@cohort.id) %></h4>
 <% end %>
-
-<h4>Classmates</h4>
-<p>
-  <% if @cohort.students.any? %>
-  <ul>
-    <% @cohort.students.each do |s| %>
-    <li><%= s.fullname %></li>
-    <% end %>
-  </ul>
-  <% else %>
-    No one enrolled at the moment!
-  <% end %>
-</p>
-
-<h4><%= link_to("Assignments", dashboard_cohort_assignments_path(@cohort) )  %></h4>
-<p>
-  <% if @cohort.assignments.any? %>
-  <ul>
-    <% @cohort.assignments.each do |assignment| %>
-    <li><%= link_to(assignment.title, dashboard_cohort_assignment_path(assignment.cohort_id, assignment.id) )  %></li>
-    <% end %>
-  </ul>
-  <% else %>
-    Nothing due at the moment!
-  <% end %>
-</p>
-
-<h4><%= link_to("Announcements", dashboard_cohort_announcements_path(@cohort) )  %></h4>
-<p>
-  <% if @cohort.announcements.any? %>
-  <ul>
-    <% @cohort.announcements.each do |announcement| %>
-    <li><%= link_to(announcement.title, dashboard_cohort_announcement_path(announcement.cohort_id, announcement.id) )  %></li>
-    <% end %>
-  </ul>
-  <% else %>
-    No announcements!
-  <% end %>
-</p>
+<div class="row">
+  <div class="col-sm">
+    <h4>Classmates</h4>
+    <p>
+      <% if @cohort.students.any? %>
+      <ul>
+        <% @cohort.students.each do |s| %>
+        <li><%= s.fullname %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        No one enrolled at the moment!
+      <% end %>
+    </p>
+  </div>
+  <div class="col-sm">
+    <h4><%= link_to("Assignments", dashboard_cohort_assignments_path(@cohort) )  %></h4>
+    <p>
+      <% if @cohort.assignments.any? %>
+      <ul>
+        <% @cohort.assignments.each do |assignment| %>
+        <li><%= link_to(assignment.title, dashboard_cohort_assignment_path(assignment.cohort_id, assignment.id) )  %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        Nothing due at the moment!
+      <% end %>
+    </p>
+  </div>
+  <div class="col-sm">
+    <h4><%= link_to("Announcements", dashboard_cohort_announcements_path(@cohort) )  %></h4>
+    <p>
+      <% if @cohort.announcements.any? %>
+      <ul>
+        <% @cohort.announcements.each do |announcement| %>
+        <li><%= link_to(announcement.title, dashboard_cohort_announcement_path(announcement.cohort_id, announcement.id) )  %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        No announcements!
+      <% end %>
+    </p>
+  </div>
+</div>
+<%= link_to "Back", :back %>

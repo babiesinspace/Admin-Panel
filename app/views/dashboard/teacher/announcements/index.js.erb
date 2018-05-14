@@ -1,0 +1,17 @@
+$("#teach-announce-show").on("ajax:success", checkForAnnouncements())
+
+function checkForAnnouncements() {
+  if( $("#<%= @cohort.id %>-announce-partial").length ) {
+    hideAnnouncements()
+  } else {
+    showAnnouncements()
+  }
+}
+
+function showAnnouncements() {
+  $("<%= j render 'partials/teachers/teachannounceindex' %>").insertAfter("#cohort-<%=@cohort.id%>-teach-show")
+}
+
+function hideAnnouncements() {
+  $("#<%= @cohort.id %>-announce-partial").remove()
+}

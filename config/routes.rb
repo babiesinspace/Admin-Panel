@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     authenticated :student do
         resources :grades, module: "student", :only => [:index]
-        resources :cohorts, module: "student", :only => [:show, :index] do 
+        resources :cohorts, module: "student", :only => [:show, :index, :create] do 
           resources :assignments, :only => [:show, :index]
           resources :announcements, :only => [:show, :index]
           resources :grades, only: [:show]

@@ -1,0 +1,14 @@
+$("<%= @announcement.cohort_id %>new-announce-form").on("ajax:success", checkForForm())
+
+function checkForForm() {
+  hideAnnouncementForm();
+  addAnnouncement();
+}
+
+function hideAnnouncementForm() {
+  $("#<%= @cohort.id %>-announce-new-part").remove()
+}
+
+function addAnnouncement() {
+  $("#<%= @cohort.id %>-announce-partial").replaceWith("<%= j (render partial: 'partials/teachers/teachannounceindex', object: @cohort )%>")
+}

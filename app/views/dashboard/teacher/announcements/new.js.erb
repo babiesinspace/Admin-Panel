@@ -1,0 +1,17 @@
+$("<%= @cohortid %>-announce-new").on("ajax:success", checkForForm())
+
+function checkForForm() {
+  if( $("#<%= @cohortid %>-announce-new-part").length ) {
+    hideAnnouncementForm()
+  } else {
+    showAnnouncementForm()
+  }
+}
+
+function showAnnouncementForm() {
+  $("<%= j render 'partials/teachers/teachannouncenew' %>").insertAfter("#<%= @cohortid %>-new-announce")
+}
+
+function hideAnnouncementForm() {
+  $("#<%= @cohortid %>-announce-new-part").remove()
+}

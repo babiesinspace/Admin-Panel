@@ -2,17 +2,16 @@ YOU ARE IN Student COHORTS INDEX
 
 <h1>Welcome, <%= @student.fullname %></h1>
 
-<h4>Your Classes:</h4>
-<% @cohorts.each do |cohort| %>
+<%= render "partials/students/studentcohortsindex" %>
+
+<h4>Register</h4>
+<% @othercohorts.each do |cohort| %>
 
   <p>
-    <%= link_to(cohort.name, dashboard_cohort_path(cohort) )  %>
-    <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %> 
-    <%= cohort.teacher.fullname %>   
-    <% if @student.get_course_grade(cohort.id) %>
-      <h4> Grade: <%= @student.get_course_grade(cohort.id) %></h4>
-    <% end %>
+    <strong><%= cohort.fullname %></strong>: <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %><br>
+    With <%= cohort.teacher.fullname %> 
+    <%= link_to "Sign Up", dashboard_cohorts_path(id: cohort.id), remote:true, id:"student-add-#{cohort.id}", data: { confirm: "Are you sure?" }, method: :post %>
   </p>
 
-
 <% end %>
+

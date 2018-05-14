@@ -1,0 +1,9 @@
+<div id="show-<%= @announcement.id %>-announce-container">
+  <h5><%= @announcement.title %></h5>
+
+  <p>
+    <%= @announcement.body %>
+    <br><br>
+    Ends: <%= @announcement.enddate.strftime("%a %b %d, %Y %l:%M%p")  %>
+  </p>
+</div>

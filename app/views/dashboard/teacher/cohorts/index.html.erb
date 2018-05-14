@@ -4,19 +4,22 @@ YOU ARE IN Teacher COHORTS INDEX
 
 <% if @teacher.cohorts.any? %>
   <h4>Your Classes:</h4>
-  <% @cohorts.each do |cohort| %>
+  <div id="t-cohorts-container">
+    <% @cohorts.each do |cohort| %>
+      <div id="t-cohort-<%= cohort.id %>-info">
+        <p>
+          <%= link_to(cohort.fullname, dashboard_cohort_path(cohort) )  %> 
+          <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %>  
+        </p>
+        <ul id="cohort-<%=cohort.id%>-teach-show">
+          <%= link_to("Students", dashboard_students_path )  %>
+          <%= link_to("Assignments", dashboard_cohort_assignments_path(cohort), remote: true, id: "teach-assign-index" )  %>
+          <%= link_to("Announcements", dashboard_cohort_announcements_path(cohort), remote: true )  %>      
+        </ul>
+      </div>
+    <% end %>
+  </div>
 
-    <p>
-      <%= link_to(cohort.fullname, dashboard_cohort_path(cohort) )  %> 
-      <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %>  
-    </p>
-    <ul id="cohort-<%=cohort.id%>-teach-show">
-      <%= link_to("Students", dashboard_students_path )  %>
-      <%= link_to("Assignments", dashboard_cohort_assignments_path(cohort), remote: true, id: "teach-assign-show" )  %>
-      <%= link_to("Announcements", dashboard_cohort_announcements_path(cohort) )  %>      
-    </ul>
-
-  <% end %>
 <% else %>
   <h4>Nothing right now! </h4>
 <% end %>

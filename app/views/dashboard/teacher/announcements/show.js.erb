@@ -1,0 +1,17 @@
+$("#show-<%= @announcement.id %>-announce").on("ajax:success", checkIfAnnouncement())
+
+function checkIfAnnouncement() {
+  if( $("#show-<%= @announcement.id %>-announce-container").length ) {
+    hideAnnouncement()
+  } else {
+    showAnnouncement()
+  }
+}
+
+function showAnnouncement() {
+  $("<%= j render 'partials/teachers/teachannounceshow' %>").insertAfter("#<%= @announcement.id %>-announce-links")
+}
+
+function hideAnnouncement() {
+  $("#show-<%= @announcement.id %>-announce-container").remove()
+}

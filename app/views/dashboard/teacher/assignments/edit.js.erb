@@ -1,0 +1,17 @@
+$("#assign-<%= @assignment.id %>-edit").on("ajax:success", checkForForm())
+
+function checkForForm() {
+  if( $("#assign-<%= @assignment.id %>-edit").length ) {
+    hideAssignEditForm()
+  } else {
+    showAssignEditForm()
+  }
+}
+
+function showAssignEditForm() {
+  $("<%= j render 'partials/teachers/teachassignedit' %>").insertAfter("#<%= @assignment.id %>-assign-links")
+}
+
+function hideAssignEditForm() {
+  $("#assign-<%= @assignment.id %>-edit").remove()
+}

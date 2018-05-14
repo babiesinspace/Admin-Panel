@@ -1,0 +1,9 @@
+<div id="show-<%= @assignment.id %>-assign-container">
+  <h5><%= @assignment.title %></h5>
+
+  <p>
+    <%= @assignment.instructions %>
+    <br><br>
+    Due: <%= @assignment.enddate.strftime("%B %d, %Y")  %>
+  </p>
+</div>

@@ -1,0 +1,12 @@
+$("#edit-<%= @assignment.id %>-assign-form").on("ajax:success", hideAssignmentForm())
+
+
+
+function hideAssignmentForm() {
+  $("#assign-<%= @assignment.id %>-edit").remove()
+  replaceAssignment()
+}
+
+function replaceAssignment() {
+  $("#<%= @cohort.id %>-assign-partial").replaceWith("<%= j (render partial: 'partials/teachers/teachassignindex', object: @cohort )%>")
+}

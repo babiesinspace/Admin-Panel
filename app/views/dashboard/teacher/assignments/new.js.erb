@@ -1,0 +1,17 @@
+$("<%= @cohortid %>-assign-new").on("ajax:success", checkForForm())
+
+function checkForForm() {
+  if( $("#<%= @cohortid %>-assign-new-part").length ) {
+    hideAssignmentForm()
+  } else {
+    showAssignmentForm()
+  }
+}
+
+function showAssignmentForm() {
+  $("<%= j render 'partials/teachers/teachassignnew' %>").insertAfter("#<%= @cohortid %>-new-work")
+}
+
+function hideAssignmentForm() {
+  $("#<%= @cohortid %>-assign-new-part").remove()
+}

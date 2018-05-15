@@ -9,20 +9,15 @@
 require 'faker'
 require 'date'
 
-# #First Seed
-# #Create Salaries
-# admin_salary = Salary.create(income: 100000)
-# teacher_salary = Salary.create(income: 75000)
+#First Seed
 
-# #Create Admin
-# admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin")
-# admin.salary = admin_salary
+#Create Admin
+admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin", salary: Salary.create(income: 100000))
 
-# #Create Teachers
-# 10.times do 
-#   t = User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher")
-#   t.salary = teacher_salary
-# end 
+#Create Teachers
+10.times do 
+  User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher", salary: Salary.create(income: 75000))
+end 
 
 # #Second Seed
 # # Create Courses
@@ -57,12 +52,12 @@ require 'date'
 #   User.create(email: Faker::Internet.unique.email, password: "studentpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Student")
 # end
 
-#Fourth Seed
-Student.all.each do |student|
-  student.cohorts << Cohort.find(rand(1..10))
-end 
+# #Fourth Seed
+# Student.all.each do |student|
+#   student.cohorts << Cohort.find(rand(1..10))
+# end 
 
-# !!!check if you can add student to grade on line 66!!
-40.times do 
-  StudentCohort.all.sample.update_attributes(grade: rand(50..100))
-end 
+# # !!!check if you can add student to grade on line 66!!
+# 40.times do 
+#   StudentCohort.all.sample.update_attributes(grade: rand(50..100))
+# end 

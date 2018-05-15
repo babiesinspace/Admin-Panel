@@ -21,7 +21,7 @@ admin.salary = admin_salary
 #Create Teachers
 10.times do 
   t = User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher")
-  t.salary = Salary.find_by(income: 75000).first
+  t.salary = teacher_salary
 end 
 
 # #Second Seed

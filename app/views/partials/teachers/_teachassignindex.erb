@@ -1,4 +1,4 @@
-<div class="container" id="<%= @cohort.id %>-assign-partial">
+<div class="container col-sm-6" id="<%= @cohort.id %>-assign-partial">
   <% @cohort.assignments.each do |assignment| %>
       <p id="<%= assignment.id %>-assign-links">
         <%= link_to(assignment.title, dashboard_cohort_assignment_path(@cohort.id, assignment.id), remote: true, id: "show-#{assignment.id}-assign" )  %> | 

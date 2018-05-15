@@ -9,7 +9,7 @@ function checkForAssignments() {
 }
 
 function showAssignments() {
-  $("<%= j render 'partials/teachers/teachassignindex' %>").insertAfter("#cohort-<%=@cohort.id%>-teach-show")
+  $("<%= j render 'partials/teachers/teachassignindex' %>").appendTo("#cohort-<%= @cohort.id %>-info-container")
 }
 
 function hideAssignments() {

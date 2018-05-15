@@ -55,12 +55,18 @@ require 'date'
 #   User.create(email: Faker::Internet.unique.email, password: "studentpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Student")
 # end
 
-#Fourth Seed
-Student.all.each do |student|
-  student.cohorts << Cohort.find(rand(1..10))
-end 
+# #Fourth Seed
+# Student.all.each do |student|
+#   student.cohorts << Cohort.find(rand(1..10))
+# end 
 
-# !!!check if you can add student to grade on line 66!!
-40.times do 
-  StudentCohort.all.sample.update_attributes(grade: rand(50..100))
-end 
+# # !!!check if you can add student to grade on line 66!!
+# 40.times do 
+#   StudentCohort.all.sample.update_attributes(grade: rand(50..100))
+# end 
+
+Teacher.all.each do |t|
+  t.salary.create(income: 75000)
+end
+
+Admin.first.salary.create(income: 100000)

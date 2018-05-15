@@ -1,5 +1,5 @@
-html, body{
-    height: 100%;
+html, body {
+  height: 100%;
 }
 
 #wrapper {
@@ -11,6 +11,6 @@ html, body{
 }
 
 #trump {
-  background-image: "<%= asset_url 'trumpuni.jpg' %>";
+  background-image: url(asset_path("trumpuni.jpg"));
   background-size: contain;
 }

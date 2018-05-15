@@ -8,7 +8,7 @@ html, body {
   height: 20%; }
 
 #trump {
-  background-image: url(image-path("trumpuni.jpg"));
+  background-image: url("<%= asset_path('logo.png') %> ");
   background-size: contain; }
 
 /*# sourceMappingURL=main.css.map */

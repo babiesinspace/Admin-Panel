@@ -1,4 +1,4 @@
-html, body {
+html, body{
   height: 100%;
 }
 
@@ -11,6 +11,6 @@ html, body {
 }
 
 #trump {
-  background-image: url(asset_path("trumpuni.jpg"));
+  background-image: url("/assets/images/trumpuni.jpg");
   background-size: contain;
 }

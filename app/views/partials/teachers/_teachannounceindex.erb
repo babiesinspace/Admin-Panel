@@ -1,4 +1,4 @@
-<div class="container" id="<%= @cohort.id %>-announce-partial">
+<div class="container col-sm-6" id="<%= @cohort.id %>-announce-partial">
   <% @cohort.announcements.each do |announcement| %>
       <p id="<%= announcement.id %>-announce-links">
         <%= link_to(announcement.title, dashboard_cohort_announcement_path(@cohort.id, announcement.id), remote: true, id: "show-#{announcement.id}-announce" )  %>

@@ -9,7 +9,7 @@ function checkForAnnouncements() {
 }
 
 function showAnnouncements() {
-  $("<%= j render 'partials/teachers/teachannounceindex' %>").insertAfter("#cohort-<%=@cohort.id%>-teach-show")
+  $("<%= j render 'partials/teachers/teachannounceindex' %>").appendTo("#cohort-<%= @cohort.id %>-info-container")
 }
 
 function hideAnnouncements() {

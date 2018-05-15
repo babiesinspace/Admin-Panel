@@ -18,4 +18,11 @@ class Dashboard::Student::CohortsController < ApplicationController
     @mycohorts = @student.cohorts.order(startdate: :asc)
   end 
 
+  def destroy
+    @student = current_user
+    @cohort = Cohort.find(params[:id])
+    StudentCohort.find_by(cohort: @cohort, student: @student).destroy
+    @mycohorts = @student.cohorts.order(startdate: :asc)
+  end 
+
 end

@@ -42,6 +42,9 @@ gem 'faker'
 gem 'bootstrap'
 gem 'popper_js'
 gem 'jquery-rails'
+gem 'rollbar'
+gem 'oj'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

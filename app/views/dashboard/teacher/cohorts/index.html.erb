@@ -1,12 +1,10 @@
-YOU ARE IN Teacher COHORTS INDEX
-
 <h1>Welcome, <%= @teacher.fullname %></h1>
 
 <% if @teacher.cohorts.any? %>
   <h4>Your Classes:</h4>
-  <div id="t-cohorts-container">
+  <div class="row" id="t-cohorts-container">
     <% @cohorts.each do |cohort| %>
-      <div id="t-cohort-<%= cohort.id %>-info">
+      <div class="col-sm-6" id="t-cohort-<%= cohort.id %>-info">
         <p>
           <%= link_to(cohort.fullname, dashboard_cohort_path(cohort) )  %> 
           <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %>  
@@ -16,6 +14,7 @@ YOU ARE IN Teacher COHORTS INDEX
           <%= link_to("Assignments", dashboard_cohort_assignments_path(cohort), remote: true, id: "teach-assign-index" )  %>
           <%= link_to("Announcements", dashboard_cohort_announcements_path(cohort), remote: true )  %>      
         </ul>
+        <div class="row" id="cohort-<%= cohort.id %>-info-container"></div>
       </div>
     <% end %>
   </div>

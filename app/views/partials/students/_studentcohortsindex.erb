@@ -2,13 +2,16 @@
   <h4>Your Classes:</h4>
   <% @mycohorts.each do |cohort| %>
 
-    <p>
+    <p class="container">
       <%= link_to(cohort.fullname, dashboard_cohort_path(cohort) )  %>
       <%= cohort.startdate.strftime("%B %d, %Y") %> - <%= cohort.enddate.strftime("%B %d, %Y") %> 
       <%= cohort.teacher.fullname %>   
       <% if @student.get_course_grade(cohort.id) %>
-        <h4> Grade: <%= @student.get_course_grade(cohort.id) %></h4>
+        <h5> Grade: <%= @student.get_course_grade(cohort.id) %>
       <% end %>
+      <%= link_to("Drop Course", dashboard_cohort_path(id: cohort.id), remote:true, id:"student-remove-#{cohort.id}", data: { confirm: "Are you sure you want to drop #{cohort.fullname}?" }, method: :delete )  %>
+      </h5>
+      
     </p>
 
   <% end %>

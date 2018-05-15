@@ -1,8 +1,5 @@
-THIS IS THE TEACHER - COHORT - GRADE EDITOR 
-
 <h2>Change <%= @grade.student.fullname %>'s Grade</h2>
 
-<h1>Put the below code in a partial!</h1>
 <% if @grade.errors.any? %>
   <ul>
     <% @grade.errors.full_messages.each do |msg| %>

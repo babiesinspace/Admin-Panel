@@ -9,7 +9,7 @@ function checkForCourses() {
 }
 
 function showCourses() {
-  $("<%= j render 'partials/admins/admincourseindex' %>").insertAfter("#course-directory-link")
+  $("<%= j render 'partials/admins/admincourseindex' %>").appendTo("#course-directory-container")
 }
 
 function hideCourses() {

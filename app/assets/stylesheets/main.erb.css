@@ -8,7 +8,7 @@ html, body {
   height: 20%; }
 
 #trump {
-  background-image: asset_url("trumpuni.jpg");
+  background-image: url(asset-path("trumpuni.jpg", image));
   background-size: contain; }
 
 /*# sourceMappingURL=main.erb.css.map */

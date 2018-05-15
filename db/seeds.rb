@@ -11,8 +11,8 @@ require 'date'
 
 # #First Seed
 # #Create Salaries
-# admin_salary = Salary.create(income: 100000)
-# teacher_salary = Salary.create(income: 75000)
+admin_salary = Salary.create(income: 100000)
+teacher_salary = Salary.create(income: 75000)
 
 # #Create Admin
 # admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin", salary: admin_salary)
@@ -66,7 +66,7 @@ require 'date'
 # end 
 
 Teacher.all.each do |t|
-  t.salary.create(income: 75000)
+  t.salary = teacher_salary
 end
 
-Admin.first.salary.create(income: 100000)
+Admin.first.salary = admin_salary

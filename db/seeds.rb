@@ -9,17 +9,17 @@
 require 'faker'
 require 'date'
 
-# #Create Salaries
-# admin_salary = Salary.create(income: 100000)
-# teacher_salary = Salary.create(income: 75000)
+#Create Salaries
+admin_salary = Salary.create(income: 100000)
+teacher_salary = Salary.create(income: 75000)
 
-# #Create Admin
-# admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin", salary: admin_salary)
+#Create Admin
+admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin", salary: admin_salary)
 
-# #Create Teachers
-# 10.times do 
-#   User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher", salary: teacher_salary)
-# end 
+#Create Teachers
+10.times do 
+  User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher", salary: teacher_salary)
+end 
 
 
 # # Create Courses
@@ -59,6 +59,6 @@ require 'date'
 # end 
 
 # !!!check if you can add student to grade on line 66!!
-40.times do 
-  StudentCohort.all.sample.update_attributes(grade: rand(50..100))
-end 
+# 40.times do 
+#   StudentCohort.all.sample.update_attributes(grade: rand(50..100))
+# end 

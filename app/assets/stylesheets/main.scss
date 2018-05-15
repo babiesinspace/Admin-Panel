@@ -12,7 +12,7 @@ html, body{
 
 #trump {
   background: {
-    image: asset_url("trumpuni.jpg");
+    image: "<% asset_url('trumpuni.jpg') %>";
     size: contain;
   }
 }

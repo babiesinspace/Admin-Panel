@@ -4,14 +4,14 @@ Welcome to my Trump University Admin Panel, visit a Heroku-hosted version here: 
 
 Feel free to make yourself a teacher or student account. Or, log in using:<br>
 
-    Teacher email: lizeth@kohler.biz<br>
-    Teacher password: teacherpassword<br>
+    Teacher email: lizeth@kohler.biz
+    Teacher password: teacherpassword
   
-    Admin email: admin@gmail.com<br>
-    Admin password: adminpassword<br>
+    Admin email: admin@gmail.com
+    Admin password: adminpassword
   
-    Student email: stephan_yundt@dach.net<br>
-    Student password: studentpassword<br>
+    Student email: stephan_yundt@dach.net
+    Student password: studentpassword
     
 Please do not delete any of these accounts or modify their information. They are to show the full functionality of the site. Please modify your own created accounts. 
 

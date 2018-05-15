@@ -9,18 +9,20 @@
 require 'faker'
 require 'date'
 
-# #First Seed
-# #Create Salaries
+#First Seed
+#Create Salaries
 admin_salary = Salary.create(income: 100000)
 teacher_salary = Salary.create(income: 75000)
 
-# #Create Admin
-# admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin", salary: admin_salary)
+#Create Admin
+admin = User.create(email: "admin@gmail.com", password: "adminpassword", first: "Principal", last: "School", age: 43, education: "PhD", type: "Admin")
+admin.salary = admin_salary
 
-# #Create Teachers
-# 10.times do 
-#   User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher", salary: teacher_salary)
-# end 
+#Create Teachers
+10.times do 
+  t = User.create(email: Faker::Internet.unique.email, password: "teacherpassword", first: Faker::Name.first_name, last: Faker::Name.last_name, age: Faker::Number.between(18, 100), education: ["BA", "MA", "PhD", "Self"].sample, type: "Teacher")
+  t.salary = Salary.find_by(income: 75000).first
+end 
 
 # #Second Seed
 # # Create Courses
@@ -64,9 +66,3 @@ teacher_salary = Salary.create(income: 75000)
 # 40.times do 
 #   StudentCohort.all.sample.update_attributes(grade: rand(50..100))
 # end 
-
-Teacher.all.each do |t|
-  t.salary = teacher_salary
-end
-
-Admin.first.salary = admin_salary

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,UAAU;EACR,MAAM,EAAE,IAAI;;AAGd,QAAS;EACP,MAAM,EAAE,IAAI;;AAGd,MAAO;EACL,MAAM,EAAE,GAAG;;AAGb,MAAO;EACL,gBAAgB,EAAE,sCAAsC;EACxD,eAAe,EAAE,OAAO",
-"sources": ["main.erb.scss"],
-"names": [],
-"file": "main.erb.css"
-}

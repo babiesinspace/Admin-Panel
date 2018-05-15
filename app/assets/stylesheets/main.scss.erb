@@ -1,4 +1,6 @@
-html, body{
+//= depend_on_asset "trumpuni.jpg"
+
+html, body {
   height: 100%;
 }
 
@@ -11,6 +13,6 @@ html, body{
 }
 
 #trump {
-  background-image: url(image-path("trumpuni.jpg"));
+  background-image: url("<%= asset_path('logo.png') %> ");
   background-size: contain;
 }

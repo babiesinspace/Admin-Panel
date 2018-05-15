@@ -11,6 +11,6 @@ html, body{
 }
 
 #trump {
-  background-image: image-url('trumpuni.jpg');
+  background: image-path("<%= asset_path 'trumpuni.jpg' %>");
   background-size: contain;
 }

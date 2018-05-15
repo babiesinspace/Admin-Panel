@@ -11,6 +11,8 @@ html, body{
 }
 
 #trump {
-  background-image: url("/assets/images/trumpuni.jpg");
-  background-size: contain;
+  background: {
+    image: asset_url("trumpuni.jpg");
+    size: contain;
+  }
 }

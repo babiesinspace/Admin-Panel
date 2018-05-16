@@ -1,5 +1,3 @@
-THIS IS TO EDIT SPECIFIC COHORT DATA
-
 <h2>Edit <%= @cohort.fullname %></h2>
 
 <%= form_for(@cohort, url: dashboard_course_cohort_path(@cohort.course_id, @cohort), html: { method: :put }) do |f| %>
